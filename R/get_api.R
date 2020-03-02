@@ -1,12 +1,16 @@
-#' Title
+#' Fetch national carbon intensity data for specified time period
 #'
 #' @param start {character} A start date of the intesity data
 #' @param end {character} An end date of the intesity data
 #'
-#' @return
+#' @return a data.frame with 1/2-hourly carbon intensity data for specified time period
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' start <- "2019-04-01"
+#' end <- "2019-04-07"
+#' get_intensity(start, end)
+#' }
 get_intensity <- function(start, end) {
   url <- "https://api.carbonintensity.org.uk/intensity/"
   from_date <- paste0(as.Date(start), "T00:00Z/")
