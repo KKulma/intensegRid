@@ -4,12 +4,14 @@
 \alias{get_intensity}
 \title{Fetch national carbon intensity data for specified time period}
 \usage{
-get_intensity(start, end)
+get_intensity(start, end, regional = FALSE)
 }
 \arguments{
 \item{start}{{character} A start date of the intesity data}
 
 \item{end}{{character} An end date of the intesity data}
+
+\item{regional}{{logical} Whether the carbon intensity data should contain regional break down. Set to FALSE by default.}
 }
 \value{
 a data.frame with 1/2-hourly carbon intensity data for specified time period
@@ -22,5 +24,6 @@ Fetch national carbon intensity data for specified time period
 start <- "2019-04-01"
 end <- "2019-04-07"
 get_intensity(start, end)
+get_intensity(start, end, regional = TRUE)
 }
 }
