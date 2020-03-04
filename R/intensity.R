@@ -26,17 +26,17 @@ get_intensity <- function(start, end, regional = FALSE) {
 
   call <- paste0(url, from_date, to_date)
 
-  get_data <- httr::GET(call)
+  response <- httr::GET(call)
 
 
-  if (get_data$status_code != 200) {
-    stop(paste0("ERROR: The status call is ", get_data$status_code))
+  if (response$status_code != 200) {
+    stop(paste0("ERROR: The status call is ", response$status_code))
   } else {
-    get_data_content <-
-      httr::content(get_data, as = "text", encoding = "UTF-8")
+    response_content <-
+      httr::content(response, as = "text", encoding = "UTF-8")
 
     data <-
-      jsonlite::fromJSON(get_data_content, flatten = TRUE)[[1]]
+      jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
 
     if (regional) {
       data <- data %>%
@@ -48,36 +48,6 @@ get_intensity <- function(start, end, regional = FALSE) {
     colnames(data) <- clean_names
   }
   data
-}
-
-
-#' Get generation mix for current half hour
-#'
-#' @return tibble
-#' @export
-#'
-#' @examples \dontrun{
-#' get_current_mix()}
-get_current_mix <- function() {
-  url <- 'https://api.carbonintensity.org.uk/generation'
-  get_data <- httr::GET(url)
-
-  if (get_data$status_code != 200) {
-    stop(paste0("ERROR: The status call is ", get_data$status_code))
-  } else {
-    get_data_content <-
-      httr::content(get_data, as = "text", encoding = "UTF-8")
-
-    data <-
-      jsonlite::fromJSON(get_data_content, flatten = TRUE)[[1]]
-
-    result <- data$generationmix %>%
-      dplyr::mutate(from = lubridate::ymd_hm(data$from),
-                    to = lubridate::ymd_hm(data$to))
-  }
-
-  result
-
 }
 
 
@@ -103,13 +73,13 @@ get_stats <- function(start, end) {
 
   call <- paste0(url, from_date, to_date)
 
-  get_data <- httr::GET(call)
+  response <- httr::GET(call)
 
-  if (get_data$status_code != 200) {
-    stop(paste0("ERROR: The status call is ", get_data$status_code))
+  if (response$status_code != 200) {
+    stop(paste0("ERROR: The status call is ", response$status_code))
   } else {
-    get_data_content <- httr::content(get_data, as = "text", encoding = "UTF-8")
-    data <- jsonlite::fromJSON(get_data_content, flatten = TRUE)[[1]]
+    response_content <- httr::content(response, as = "text", encoding = "UTF-8")
+    data <- jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
 
     result <- data %>%
       dplyr::mutate(from = lubridate::ymd_hm(!!rlang::sym("from")),
@@ -131,15 +101,15 @@ get_stats <- function(start, end) {
 #' @examples get_factors()
 get_factors <- function() {
   url <- 'https://api.carbonintensity.org.uk/intensity/factors'
-  get_data <- httr::GET(url)
+  response <- httr::GET(url)
 
-  if (get_data$status_code != 200) {
-    stop(paste0("ERROR: The status call is ", get_data$status_code))
+  if (response$status_code != 200) {
+    stop(paste0("ERROR: The status call is ", response$status_code))
   } else {
-    get_data_content <-
-      httr::content(get_data, as = "text", encoding = "UTF-8")
+    response_content <-
+      httr::content(response, as = "text", encoding = "UTF-8")
 
-    data <- jsonlite::fromJSON(get_data_content, flatten = TRUE)[[1]]
+    data <- jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
   }
 
   tidyr::gather(data)
