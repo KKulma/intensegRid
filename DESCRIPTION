@@ -14,4 +14,8 @@ Imports:
     httr,
     jsonlite,
     magrittr,
-    tidyr
+    tidyr,
+    tibble,
+    dplyr,
+    lubridate,
+    rlang
