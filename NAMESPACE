@@ -3,4 +3,5 @@
 export("%>%")
 export(get_current_mix)
 export(get_intensity)
+export(get_stats)
 importFrom(magrittr,"%>%")
