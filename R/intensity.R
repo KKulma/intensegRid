@@ -16,7 +16,8 @@
 get_intensity <- function(start, end, regional = FALSE) {
   if (regional) {
     url <-
-      url <- 'https://api.carbonintensity.org.uk/regional/intensity/'
+      url <-
+      'https://api.carbonintensity.org.uk/regional/intensity/'
   } else {
     url <- "https://api.carbonintensity.org.uk/intensity/"
   }
@@ -29,24 +30,29 @@ get_intensity <- function(start, end, regional = FALSE) {
   response <- httr::GET(call)
 
 
+  if (httr::http_type(response) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
+
   if (response$status_code != 200) {
     stop(paste0("ERROR: The status call is ", response$status_code))
-  } else {
-    response_content <-
-      httr::content(response, as = "text", encoding = "UTF-8")
-
-    data <-
-      jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
-
-    if (regional) {
-      data <- data %>%
-        tidyr::unnest(!!rlang::sym("regions")) %>%
-        tidyr::unnest(!!rlang::sym("generationmix"))
-    }
-
-    clean_names <- gsub('intensity.', '', colnames(data))
-    colnames(data) <- clean_names
   }
+
+  response_content <-
+    httr::content(response, as = "text", encoding = "UTF-8")
+
+  data <-
+    jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
+
+  if (regional) {
+    data <- data %>%
+      tidyr::unnest(!!rlang::sym("regions")) %>%
+      tidyr::unnest(!!rlang::sym("generationmix"))
+  }
+
+  clean_names <- gsub('intensity.', '', colnames(data))
+  colnames(data) <- clean_names
+
   data
 }
 
@@ -75,20 +81,26 @@ get_stats <- function(start, end) {
 
   response <- httr::GET(call)
 
+  if (httr::http_type(response) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
+
   if (response$status_code != 200) {
     stop(paste0("ERROR: The status call is ", response$status_code))
-  } else {
-    response_content <- httr::content(response, as = "text", encoding = "UTF-8")
-    data <- jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
-
-    result <- data %>%
-      dplyr::mutate(from = lubridate::ymd_hm(!!rlang::sym("from")),
-                    to = lubridate::ymd_hm(!!rlang::sym("to"))
-      )
-
-    clean_names <- gsub('intensity.', '', colnames(result))
-    colnames(result) <- clean_names
   }
+
+  response_content <-
+    httr::content(response, as = "text", encoding = "UTF-8")
+  data <-
+    jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
+
+  result <- data %>%
+    dplyr::mutate(from = lubridate::ymd_hm(!!rlang::sym("from")),
+                  to = lubridate::ymd_hm(!!rlang::sym("to")))
+
+  clean_names <- gsub('intensity.', '', colnames(result))
+  colnames(result) <- clean_names
+
   result
 }
 
@@ -103,14 +115,57 @@ get_factors <- function() {
   url <- 'https://api.carbonintensity.org.uk/intensity/factors'
   response <- httr::GET(url)
 
-  if (response$status_code != 200) {
-    stop(paste0("ERROR: The status call is ", response$status_code))
-  } else {
-    response_content <-
-      httr::content(response, as = "text", encoding = "UTF-8")
-
-    data <- jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
+  if (httr::http_type(response) != "application/json") {
+    stop("API did not return json", call. = FALSE)
   }
 
+  if (response$status_code != 200) {
+    stop(paste0("ERROR: The status call is ", response$status_code))
+  }
+
+  response_content <-
+    httr::content(response, as = "text", encoding = "UTF-8")
+
+  data <-
+    jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
+
+
   tidyr::gather(data)
+}
+
+#' Get Regional Carbon Intensity data for current half hour for specified postcode.
+#'
+#' @param postcode {character} Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only
+#'
+#' @return tibble
+#' @export
+#'
+#' @examples
+get_ci_by_postcode <- function(postcode) {
+  url <- "https://api.carbonintensity.org.uk/regional/postcode/"
+  response <- httr::GET(paste0(url, postcode))
+
+  if (httr::http_type(response) != "application/json") {
+    stop("API did not return json", call. = FALSE)
+  }
+
+  if (response$status_code != 200) {
+    stop(paste0("ERROR: The status call is ", response$status_code))
+  }
+
+  response_content <-
+    httr::content(response, as = "text", encoding = "UTF-8")
+
+  data <-
+    jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
+
+  result <- data %>%
+    tidyr::unnest(data) %>%
+    tidyr::unnest(generationmix)
+
+  clean_names <- gsub('intensity.', '', colnames(result))
+  colnames(result) <- clean_names
+
+  result
+
 }
