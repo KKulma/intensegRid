@@ -121,3 +121,26 @@ get_stats <- function(start, end) {
   }
   result
 }
+
+
+#' Get Carbon Intensity factors for each fuel type
+#'
+#' @return a tibble
+#' @export
+#'
+#' @examples get_factors()
+get_factors <- function() {
+  url <- 'https://api.carbonintensity.org.uk/intensity/factors'
+  get_data <- httr::GET(url)
+
+  if (get_data$status_code != 200) {
+    stop(paste0("ERROR: The status call is ", get_data$status_code))
+  } else {
+    get_data_content <-
+      httr::content(get_data, as = "text", encoding = "UTF-8")
+
+    data <- jsonlite::fromJSON(get_data_content, flatten = TRUE)[[1]]
+  }
+
+  tidyr::gather(data)
+}
