@@ -19,3 +19,7 @@ Imports:
     dplyr,
     lubridate,
     rlang
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
