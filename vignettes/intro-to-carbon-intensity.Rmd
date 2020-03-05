@@ -1,0 +1,103 @@
+---
+title: "intro-to-carbon-intensity"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{intro-to-carbon-intensity}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+1. national
+  * for today
+  * for a given date
+  * for a given date and time (date, period)
+  * for a specifc 1/2 hour period (from = datetime)
+  * for a given 24-hr period (forward or past)
+  * for a given 48-hr period (forward or past)
+  * between different datetimes (start, end) 
+
+2. regional
+  * for the current 1/2 hr for all the regions
+  * as above, for england
+  * as above, for scotland
+  * as above, for wales
+  * as above, for a specified postcode
+  * as above, for a specified region
+  * for the next 24 hrs (from a specified datetime)
+  * as above, for a specified postcode
+  * as above, for a specified region
+  * for the next 48 hrs (from a specified datetime)
+  * as above, for a specified postcode
+  * as above, for a specified region
+  * for the past 24 hours
+  * as above, for a specified postcode
+  * as above, for a specified region
+  * for the time beteen the two datetimes
+  * as above, for a specified postcode
+  * as above, for a specified region
+
+3. stats
+  * stats for the period between two datetimes
+  * stats per block (defined time intervals) between two datetimes
+
+4. generationmix
+  * for the current 1/2 hr
+  * for the past 24 hrs (from)
+  * between the two datetimes
+  
+
+```{r setup}
+library(intensegRid)
+```
+
+```{r ex1}
+### intensity ------------
+## function arguments
+start <- "2019-04-01"
+end <- "2019-04-07"
+
+## 
+mydata <- get_intensity(start, end)
+str(mydata)
+```
+
+```{r ex2}
+## 
+my_regional_data <- get_intensity(start, end, regional = TRUE)
+str(my_regional_data)
+```
+
+```{r ex3}
+## 
+get_stats(start, end)
+```
+
+```{r ex4}
+## 
+get_mix()
+get_mix(start, end)
+```
+
+```{r ex5}
+## 
+get_factors()
+```
+
+```{r ex6}
+## 
+get_ci_by_postcode("EN2")
+```
+
+```{r ex7}
+## 
+get_regional_ci("England")
+get_regional_ci("Scotland")
+get_regional_ci("Wales")
+```
