@@ -10,10 +10,10 @@
 #' @examples \dontrun{
 #' start <- "2019-04-01"
 #' end <- "2019-04-07"
-#' get_intensity(start, end)
-#' get_intensity(start, end, regional = TRUE)
+#' get_national_ci(start, end)
+#' get_national_ci(start, end, regional = TRUE)
 #' }
-get_intensity <- function(start, end, regional = FALSE) {
+get_national_ci <- function(start, end, regional = FALSE) {
   if (regional) {
     url <-
       url <-
@@ -27,22 +27,7 @@ get_intensity <- function(start, end, regional = FALSE) {
 
   call <- paste0(url, from_date, to_date)
 
-  response <- httr::GET(call)
-
-
-  if (httr::http_type(response) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
-
-  if (response$status_code != 200) {
-    stop(paste0("ERROR: The status call is ", response$status_code))
-  }
-
-  response_content <-
-    httr::content(response, as = "text", encoding = "UTF-8")
-
-  data <-
-    jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
+  data <- get_data(call)
 
   if (regional) {
     data <- data %>%
@@ -57,10 +42,10 @@ get_intensity <- function(start, end, regional = FALSE) {
 }
 
 
-#' Get Carbon Intensity statistics between from and to dates
+#' Get generation mix for current half hour
 #'
-#' @param start {character} A start date of the stats data
-#' @param end {character} An end date of the stats data
+#' @param start {character} A start date of the intesity data
+#' @param end {character} An end date of the intesity data
 #'
 #' @return tibble
 #' @export
@@ -68,70 +53,70 @@ get_intensity <- function(start, end, regional = FALSE) {
 #' @examples \dontrun{
 #' start <- "2019-04-01"
 #' end <- "2019-04-07"
-#' get_stats(start, end)
-#' }
-#'
-get_stats <- function(start, end) {
-  url <- "https://api.carbonintensity.org.uk/intensity/stats/"
+#' get_mix(start, end)
+#' get_mix()}
+get_mix <- function(start = NULL, end = NULL) {
+  url <- 'https://api.carbonintensity.org.uk/generation/'
 
-  from_date <- paste0(as.Date(start), "T00:00Z/")
-  to_date <- paste0(as.Date(end), "T23:59Z")
+  if (!is.null(start) && !is.null(end)) {
+    from_date <- paste0(as.Date(start), "T00:00Z/")
+    to_date <- paste0(as.Date(end), "T23:59Z")
 
-  call <- paste0(url, from_date, to_date)
-
-  response <- httr::GET(call)
-
-  if (httr::http_type(response) != "application/json") {
-    stop("API did not return json", call. = FALSE)
+    call <- paste0(url, from_date, to_date)
+  } else {
+    call <- url
   }
 
-  if (response$status_code != 200) {
-    stop(paste0("ERROR: The status call is ", response$status_code))
+  data <- get_data(call)
+
+  if (!is.null(start) && !is.null(end)) {
+    result <- data %>%
+      tidyr::unnest(!!rlang::sym("generationmix")) %>%
+      dplyr::mutate(
+        from = lubridate::ymd_hm(!!rlang::sym("from")),
+        to = lubridate::ymd_hm(!!rlang::sym("to"))
+      )
+  } else {
+    result <- data$generationmix %>%
+      dplyr::mutate(from = lubridate::ymd_hm(data$from),
+                    to = lubridate::ymd_hm(data$to))
   }
-
-  response_content <-
-    httr::content(response, as = "text", encoding = "UTF-8")
-  data <-
-    jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
-
-  result <- data %>%
-    dplyr::mutate(from = lubridate::ymd_hm(!!rlang::sym("from")),
-                  to = lubridate::ymd_hm(!!rlang::sym("to")))
-
-  clean_names <- gsub('intensity.', '', colnames(result))
-  colnames(result) <- clean_names
 
   result
+
 }
 
 
-#' Get Carbon Intensity factors for each fuel type
+
+#' Get Carbon Intensity data for current half hour for a specified GB Region
+#'
+#' @param region {character} The name of the GB region, one of "England", "Scotland" or "Wales"
 #'
 #' @return a tibble
 #' @export
 #'
-#' @examples get_factors()
-get_factors <- function() {
-  url <- 'https://api.carbonintensity.org.uk/intensity/factors'
-  response <- httr::GET(url)
+#' @examples
+#' get_regional_ci("England")
+#' get_regional_ci("Scotland")
+#' get_regional_ci("Wales")
+get_regional_ci <-
+  function(region = c("England", "Scotland", "Wales")) {
+    url <- "https://api.carbonintensity.org.uk/regional/"
+    call <- paste0(url, tolower(region), '/')
 
-  if (httr::http_type(response) != "application/json") {
-    stop("API did not return json", call. = FALSE)
+    data <- get_data(call)
+
+    result <- tidyr::unnest(data, data) %>%
+      tidyr::unnest(generationmix)
+
+    clean_names <- gsub('intensity.', '', colnames(result))
+    colnames(result) <- clean_names
+
+    result
+
   }
 
-  if (response$status_code != 200) {
-    stop(paste0("ERROR: The status call is ", response$status_code))
-  }
 
-  response_content <-
-    httr::content(response, as = "text", encoding = "UTF-8")
-
-  data <-
-    jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
-
-
-  tidyr::gather(data)
-}
 
 #' Get Regional Carbon Intensity data for current half hour for specified postcode.
 #'
@@ -140,24 +125,18 @@ get_factors <- function() {
 #' @return tibble
 #' @export
 #'
-#' @examples
-get_ci_by_postcode <- function(postcode) {
-  url <- "https://api.carbonintensity.org.uk/regional/postcode/"
-  response <- httr::GET(paste0(url, postcode))
+#' @examples get_ci_by_postcode("SW1")
+get_postcode_ci <- function(postcode, regional = FALSE) {
 
-  if (httr::http_type(response) != "application/json") {
-    stop("API did not return json", call. = FALSE)
+  if (regional) {
+    url <- "https://api.carbonintensity.org.uk/regional/postcode/"
+  } else {
+    url <- "https://api.carbonintensity.org.uk/regional/postcode/"
   }
 
-  if (response$status_code != 200) {
-    stop(paste0("ERROR: The status call is ", response$status_code))
-  }
+  call <- paste0(url, postcode)
 
-  response_content <-
-    httr::content(response, as = "text", encoding = "UTF-8")
-
-  data <-
-    jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
+  data <- get_data(call)
 
   result <- data %>%
     tidyr::unnest(data) %>%
@@ -169,3 +148,7 @@ get_ci_by_postcode <- function(postcode) {
   result
 
 }
+
+
+
+
