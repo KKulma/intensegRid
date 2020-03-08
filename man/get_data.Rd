@@ -7,7 +7,7 @@
 get_data(call)
 }
 \arguments{
-\item{call}{}
+\item{call}{{character} API URL}
 }
 \value{
 tibble

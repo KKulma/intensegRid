@@ -21,6 +21,6 @@ Get generation mix for current half hour
 \dontrun{
 start <- "2019-04-01"
 end <- "2019-04-07"
-get_current_mix(start, end)
-get_current_mix()}
+get_mix(start, end)
+get_mix()}
 }

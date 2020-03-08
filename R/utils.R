@@ -1,9 +1,8 @@
 #' Retrieve raw data from Carbon Intensity API
 #'
-#' @param call
+#' @param call {character} API URL
 #'
 #' @return tibble
-#' @export
 #'
 #' @examples \dontrun{
 #'  url <- 'https://api.carbonintensity.org.uk/intensity/factors'
@@ -28,4 +27,12 @@ get_data <- function(call) {
     jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
 
   data
+}
+
+
+unify_dates <- function(string) {
+  string %>%
+    as.character() %>%
+    gsub("[[:punct:]]", ., replacement = '') %>%
+    trimws()
 }

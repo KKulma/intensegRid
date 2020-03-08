@@ -4,28 +4,19 @@
 \alias{get_regional_ci}
 \title{Get Carbon Intensity data for current half hour for a specified GB Region}
 \usage{
-get_regional_ci(start)
-
-get_regional_ci(start)
+get_regional_ci(region = c("England", "Scotland", "Wales"))
 }
 \arguments{
-\item{start}{}
-
 \item{region}{{character} The name of the GB region, one of "England", "Scotland" or "Wales"}
 }
 \value{
 a tibble
-
-a tibble
 }
 \description{
 Get Carbon Intensity data for current half hour for a specified GB Region
-
-Get Carbon Intensity data for past 24h for GB regions
 }
 \examples{
-get_regional("England")
-get_regional("Scotland")
-get_regional("Wales")
-get_regional_ci()
+get_regional_ci("England")
+get_regional_ci("Scotland")
+get_regional_ci("Wales")
 }
