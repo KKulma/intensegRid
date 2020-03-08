@@ -18,7 +18,8 @@ Imports:
     tibble,
     dplyr,
     lubridate,
-    rlang
+    rlang,
+    assertthat
 Suggests: 
     knitr,
     rmarkdown
