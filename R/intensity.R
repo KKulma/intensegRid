@@ -1,42 +1,57 @@
 #' Fetch national carbon intensity data for specified time period
 #'
 #' @param start {character} A start date of the intesity data
+#' @param date {character} A date for the intensity data
+#' @param period {numeric} Half hour settlement period between 1-48 e.g. 42
 #' @param end {character} An end date of the intesity data
-#' @param regional {logical} Whether the carbon intensity data should contain regional break down. Set to FALSE by default.
 #'
 #' @return a data.frame with 1/2-hourly carbon intensity data for specified time period
 #' @export
 #'
 #' @examples \dontrun{
-#' start <- "2019-04-01"
-#' end <- "2019-04-07"
-#' get_national_ci(start, end)
-#' get_national_ci(start, end, regional = TRUE)
+#' get_national_ci()
+#' get_national_ci(date = "2019-12-31")
+#' get_national_ci(date = "2019-12-31", period = 48)
+#' get_national_ci(start = "2019-01-01", end = "2019-12-31")
 #' }
-get_national_ci <- function(start, end, regional = FALSE) {
-  if (regional) {
-    url <-
-      url <-
-      'https://api.carbonintensity.org.uk/regional/intensity/'
-  } else {
-    url <- "https://api.carbonintensity.org.uk/intensity/"
+get_national_ci <- function(date = NULL, period = NULL, start = NULL, end = NULL) {
+  url <- "https://api.carbonintensity.org.uk/intensity/"
+
+  if (!is.null(period) && !dplyr::between(period, 1, 48)) {
+    stop("period argument can only take values between 1 and 48")
   }
 
-  from_date <- paste0(as.Date(start), "T00:00Z/")
-  to_date <- paste0(as.Date(end), "T23:59Z")
+  if (all(is.null(c(start, end, date, period)))) {
+    call <- url
+  } else if (all(!is.null(c(start, end))) && all(is.null(c(date, period)))) {
+    from_date <- paste0(as.Date(start), "T00:00Z/")
+    to_date <- paste0(as.Date(end), "T23:59Z")
+    call <- paste0(url, from_date, to_date)
+  } else if (!is.null(date) && all(is.null(c(start, end, period)))) {
+    url <- paste0(url, "date/")
+    call <- paste0(url, date)
+  } else if (all(!is.null(c(date, period))) && all(is.null(c(start, end)))) {
+    url <- paste0(url, "date/")
+    call <- paste0(url, date, '/', period)
 
-  call <- paste0(url, from_date, to_date)
+  } else {
+    stop("Both start and end arguments have to be either NULL or in use")
+  }
 
   data <- get_data(call)
 
-  if (regional) {
-    data <- data %>%
-      tidyr::unnest(!!rlang::sym("regions")) %>%
-      tidyr::unnest(!!rlang::sym("generationmix"))
-  }
-
+  # if (regional) {
+  #   data <- data %>%
+  #     tidyr::unnest(!!rlang::sym("regions")) %>%
+  #     tidyr::unnest(!!rlang::sym("generationmix"))
+  # }
+  #
   clean_names <- gsub('intensity.', '', colnames(data))
   colnames(data) <- clean_names
+
+  data <- data %>%
+    dplyr::mutate(from = lubridate::ymd_hm(from),
+           to = lubridate::ymd_hm(to))
 
   data
 }
@@ -125,14 +140,13 @@ get_regional_ci <-
 #' @return tibble
 #' @export
 #'
-#' @examples get_ci_by_postcode("SW1")
-get_postcode_ci <- function(postcode, regional = FALSE) {
-
-  if (regional) {
+#' @examples get_postcode_ci("EN2")
+get_postcode_ci <- function(postcode) {
+  # if (regional) {
     url <- "https://api.carbonintensity.org.uk/regional/postcode/"
-  } else {
-    url <- "https://api.carbonintensity.org.uk/regional/postcode/"
-  }
+  # } else {
+    # url <- "https://api.carbonintensity.org.uk/regional/postcode/"
+  # }
 
   call <- paste0(url, postcode)
 
@@ -148,7 +162,3 @@ get_postcode_ci <- function(postcode, regional = FALSE) {
   result
 
 }
-
-
-
-

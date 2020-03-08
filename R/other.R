@@ -1,4 +1,6 @@
 
+
+
 #' Get Carbon Intensity factors for each fuel type
 #'
 #' @return a tibble
@@ -17,6 +19,7 @@ get_factors <- function() {
 #'
 #' @param start {character} A start date of the stats data
 #' @param end {character} An end date of the stats data
+#' @param block {numeric} Block length in hours i.e. a block length of 2 hrs over a 24 hr period returns 12 items with the average, max, min for each 2 hr block
 #'
 #' @return tibble
 #' @export
@@ -25,21 +28,32 @@ get_factors <- function() {
 #' start <- "2019-04-01"
 #' end <- "2019-04-07"
 #' get_stats(start, end)
+#' get_stats(start, end, 2)
 #' }
 #'
-get_stats <- function(start, end) {
+get_stats <- function(start, end, block = NULL) {
   url <- "https://api.carbonintensity.org.uk/intensity/stats/"
 
   from_date <- paste0(as.Date(start), "T00:00Z/")
   to_date <- paste0(as.Date(end), "T23:59Z")
 
-  call <- paste0(url, from_date, to_date)
+  if (!is.null(block)) {
+    call <- paste0(url, from_date, to_date, "/", block)
+  } else {
+    call <- paste0(url, from_date, to_date)
+  }
 
   data <- get_data(call)
 
-  result <- data %>%
-    dplyr::mutate(from = lubridate::ymd_hm(!!rlang::sym("from")),
-                  to = lubridate::ymd_hm(!!rlang::sym("to")))
+  if (!is.null(block)) {
+    result <- data
+  } else {
+    result <- data %>%
+      dplyr::mutate(
+        from = lubridate::ymd_hm(!!rlang::sym("from")),
+        to = lubridate::ymd_hm(!!rlang::sym("to"))
+      )
+  }
 
   clean_names <- gsub('intensity.', '', colnames(result))
   colnames(result) <- clean_names

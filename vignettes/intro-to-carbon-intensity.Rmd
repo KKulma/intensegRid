@@ -15,42 +15,46 @@ knitr::opts_chunk$set(
 ```
 
 1. national
-  * for today
-  * for a given date
-  * for a given date and time (date, period)
-  * for a specifc 1/2 hour period (from = datetime)
-  * for a given 24-hr period (forward or past)
-  * for a given 48-hr period (forward or past)
-  * between different datetimes (start, end) 
+  + for a current 1/2 hour **[no arguments]**
+  + for today (date; can be merged with below) **[date = today()]**
+  + for a given date (date; can be merged with above) **[date = specified_date]**
+  + for a given date and time (date, period) **[date = specified_date, period = specified_period]**
+  + for a specifc 1/2 hour period (from = datetime) **[date = specified_date, period = specified_period]**
+  +- for a given 24-hr period (forward or past) **[start = date/datetime, end = date/datetime]**
+  +- for a given 48-hr period (forward or past) **[start = date/datetime, end = date/datetime]**
+  +- between different datetimes (start, end) **[start = date/datetime, end = date/datetime]**
 
 2. regional
-  * for the current 1/2 hr for all the regions
-  * as above, for england
-  * as above, for scotland
-  * as above, for wales
-  * as above, for a specified postcode
-  * as above, for a specified region
-  * for the next 24 hrs (from a specified datetime)
-  * as above, for a specified postcode
-  * as above, for a specified region
-  * for the next 48 hrs (from a specified datetime)
-  * as above, for a specified postcode
-  * as above, for a specified region
-  * for the past 24 hours
-  * as above, for a specified postcode
-  * as above, for a specified region
-  * for the time beteen the two datetimes
-  * as above, for a specified postcode
-  * as above, for a specified region
+  * for the current 1/2 hr for all the regions  **[no arguments]**
+  * for the current 1/2 hr, for england  **[country = "England"]**
+  * for the current 1/2 hr, for scotland **[country = "Scotland"]**
+  * for the current 1/2 hr, for wales **[country = "Wales"]**
+  * for the current 1/2 hr, for a specified postcode **[postcode = "SW1"]**
+  * for the current 1/2 hr, for a specified region **[region = "13"]**
+  * for the next 24 hrs, for all the regions (from a specified datetime) **[date = "xxx"]** 
+  * for the next 24 hrs, for a specified postcode **[postcode = "SW1", datetime = "xxx"]** 
+  * for the next 24 hrs, for a specified region **[start = date/datetime, end = date/datetime, region = "13"]** 
+  * for the next 48 hrs, for all the regions (from a specified datetime) **[start = date/datetime, end = date/datetime]**
+  * for the next 48 hrs, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
+  * for the next 48 hrs, for a specified region **[start = date/datetime, end = date/datetime, region = "13"]** 
+  * for the past 24 hours, for all the regions  **[start = date/datetime, end = date/datetime, region = "13"]** 
+  * for the past 24 hours, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
+  * for the past 24 hours, for a specified region **[start = date/datetime, end = date/datetime, region = "13"]** 
+  * for the time beteen the two datetimes, for all the regions **[start = date/datetime, end = date/datetime]** 
+  - for the time beteen the two datetimes, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
+  - for the time beteen the two datetimes, for a specified region **[start = date/datetime, end = date/datetime, region = 13]** 
 
 3. stats
-  * stats for the period between two datetimes
-  * stats per block (defined time intervals) between two datetimes
+  +- stats for the period between two datetimes **[start = date(-datetime), end = date/datetime]**
+  +- stats per block (defined time intervals) between two  **[start = date(-datetime), end = date (-datetime), block = 2]**
 
 4. generationmix
-  * for the current 1/2 hr
-  * for the past 24 hrs (from)
-  * between the two datetimes
+  + for the current 1/2 hr **[no arguments]**
+  +- for the past 24 hrs (from) **[start = date(-datetime), end = date(-datetime)]**
+  +- between the two datetimes **[start = date(-datetime), end = date(-datetime)]**
+
+5. others
+  + region lookup - export as data
   
 
 ```{r setup}
@@ -63,16 +67,8 @@ library(intensegRid)
 start <- "2019-04-01"
 end <- "2019-04-07"
 
-## 
-mydata <- get_intensity(start, end)
-str(mydata)
 ```
 
-```{r ex2}
-## 
-my_regional_data <- get_intensity(start, end, regional = TRUE)
-str(my_regional_data)
-```
 
 ```{r ex3}
 ## 
@@ -92,7 +88,7 @@ get_factors()
 
 ```{r ex6}
 ## 
-get_ci_by_postcode("EN2")
+get_postcode_ci("EN2")
 ```
 
 ```{r ex7}
