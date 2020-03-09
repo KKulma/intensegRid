@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-1. national
+1. British
   + for a current 1/2 hour **[no arguments]**
   + for today (date; can be merged with below) **[date = today()]**
   + for a given date (date; can be merged with above) **[date = specified_date]**
@@ -24,25 +24,34 @@ knitr::opts_chunk$set(
   +- for a given 48-hr period (forward or past) **[start = date/datetime, end = date/datetime]**
   +- between different datetimes (start, end) **[start = date/datetime, end = date/datetime]**
 
-2. regional
-  * for the current 1/2 hr for all the regions  **[no arguments]**
-  * for the current 1/2 hr, for england  **[country = "England"]**
-  * for the current 1/2 hr, for scotland **[country = "Scotland"]**
-  * for the current 1/2 hr, for wales **[country = "Wales"]**
-  * for the current 1/2 hr, for a specified postcode **[postcode = "SW1"]**
-  * for the current 1/2 hr, for a specified region **[region = "13"]**
-  * for the next 24 hrs, for all the regions (from a specified datetime) **[date = "xxx"]** 
-  * for the next 24 hrs, for a specified postcode **[postcode = "SW1", datetime = "xxx"]** 
-  * for the next 24 hrs, for a specified region **[start = date/datetime, end = date/datetime, region = "13"]** 
+2. National
+  + for the current 1/2 hr for all the regions  **[no arguments]**
+  + for the current 1/2 hr, for england  **[country = "England"]**
+  + for the current 1/2 hr, for scotland **[country = "Scotland"]**
+  + for the current 1/2 hr, for wales **[country = "Wales"]**
+  
+  
+3. Regional  
+
+  + for the current 1/2 hr, for a specified region **[region = "13"]**
+  * for the next 24 hrs, for all the regions (from a specified datetime) **[start, end]** 
+  + for the next 24 hrs, for a specified region **[start = date/datetime, end = date/datetime, region = "13"]** 
   * for the next 48 hrs, for all the regions (from a specified datetime) **[start = date/datetime, end = date/datetime]**
-  * for the next 48 hrs, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
   * for the next 48 hrs, for a specified region **[start = date/datetime, end = date/datetime, region = "13"]** 
-  * for the past 24 hours, for all the regions  **[start = date/datetime, end = date/datetime, region = "13"]** 
-  * for the past 24 hours, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
-  * for the past 24 hours, for a specified region **[start = date/datetime, end = date/datetime, region = "13"]** 
+  + for the past 24 hours, for all the regions  **[start = date/datetime, end = date/datetime, region = "13"]** 
+  + for the past 24 hours, for a specified region **[start = date/datetime, end = date/datetime, region = "13"]** 
   * for the time beteen the two datetimes, for all the regions **[start = date/datetime, end = date/datetime]** 
-  - for the time beteen the two datetimes, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
-  - for the time beteen the two datetimes, for a specified region **[start = date/datetime, end = date/datetime, region = 13]** 
+  + for the time beteen the two datetimes, for a specified region **[start = date/datetime, end = date/datetime, region = 13]** 
+  
+  
+4. Postcode  
+  + for the current 1/2 hr, for a specified postcode **[postcode = "SW1"]**
+  + for the next 48 hrs, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
+  + for the next 24 hrs, for a specified postcode **[postcode = "SW1", start, end]** 
+
+  + for the past 24 hours, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
+  + for the time beteen the two datetimes, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
+
 
 3. stats
   +- stats for the period between two datetimes **[start = date(-datetime), end = date/datetime]**
@@ -73,6 +82,7 @@ end <- "2019-04-07"
 ```{r ex3}
 ## 
 get_stats(start, end)
+get_stats(start, end, block = "2")
 ```
 
 ```{r ex4}
@@ -93,7 +103,8 @@ get_postcode_ci("EN2")
 
 ```{r ex7}
 ## 
-get_regional_ci("England")
-get_regional_ci("Scotland")
-get_regional_ci("Wales")
+get_national_ci()
+get_national_ci("England")
+get_national_ci("Scotland")
+get_national_ci("Wales")
 ```

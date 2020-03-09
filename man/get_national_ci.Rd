@@ -2,31 +2,21 @@
 % Please edit documentation in R/intensity.R
 \name{get_national_ci}
 \alias{get_national_ci}
-\title{Fetch national carbon intensity data for specified time period}
+\title{Get Carbon Intensity data for current half hour for a specified GB Region}
 \usage{
-get_national_ci(date = NULL, period = NULL, start = NULL,
-  end = NULL)
+get_national_ci(region = NULL)
 }
 \arguments{
-\item{date}{{character} A date for the intensity data}
-
-\item{period}{{numeric} Half hour settlement period between 1-48 e.g. 42}
-
-\item{start}{{character} A start date of the intesity data}
-
-\item{end}{{character} An end date of the intesity data}
+\item{region}{{character} The name of the GB region, one of 'England', 'Scotland' or 'Wales'}
 }
 \value{
-a data.frame with 1/2-hourly carbon intensity data for specified time period
+a tibble
 }
 \description{
-Fetch national carbon intensity data for specified time period
+Get Carbon Intensity data for current half hour for a specified GB Region
 }
 \examples{
-\dontrun{
-get_national_ci()
-get_national_ci(date = "2019-12-31")
-get_national_ci(date = "2019-12-31", period = 48)
-get_national_ci(start = "2019-01-01", end = "2019-12-31")
-}
+get_national_ci('England')
+get_national_ci('Scotland')
+get_national_ci('Wales')
 }
