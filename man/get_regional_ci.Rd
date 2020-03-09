@@ -2,10 +2,26 @@
 % Please edit documentation in R/intensity.R
 \name{get_regional_ci}
 \alias{get_regional_ci}
-\title{Title}
+\title{Get Carbon Intensity data between specified datetimes for specified region}
 \usage{
-get_regional_ci()
+get_regional_ci(region_id, start = NULL, end = NULL)
+}
+\arguments{
+\item{region_id}{{numeric} Region ID in the UK region. See list of Region IDs in \code{regions_lookup}}
+
+\item{start}{{character} A start date of the intesity data}
+
+\item{end}{{character} An end date of the intesity data}
+}
+\value{
+a tibble
 }
 \description{
-Title
+Get Carbon Intensity data between specified datetimes for specified region
+}
+\examples{
+\dontrun{
+get_regional_ci(13)
+get_regional_ci(13, start = '2019-01-02', end = '2019-01-03')
+}
 }
