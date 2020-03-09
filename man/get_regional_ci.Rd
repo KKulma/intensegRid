@@ -2,21 +2,10 @@
 % Please edit documentation in R/intensity.R
 \name{get_regional_ci}
 \alias{get_regional_ci}
-\title{Get Carbon Intensity data for current half hour for a specified GB Region}
+\title{Title}
 \usage{
-get_regional_ci(region = c("England", "Scotland", "Wales"))
-}
-\arguments{
-\item{region}{{character} The name of the GB region, one of "England", "Scotland" or "Wales"}
-}
-\value{
-a tibble
+get_regional_ci()
 }
 \description{
-Get Carbon Intensity data for current half hour for a specified GB Region
-}
-\examples{
-get_regional_ci("England")
-get_regional_ci("Scotland")
-get_regional_ci("Wales")
+Title
 }
