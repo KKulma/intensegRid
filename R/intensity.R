@@ -1,58 +1,41 @@
 #' Fetch British carbon intensity data for specified time period
 #'
-#' @param start {character} A start date of the intesity data
+#' @param start {character} A start date of the intesity
 #' @param end {character} An end date of the intesity data
-#' @param date {character} A date for the intensity data
-#' @param period {numeric} Half hour settlement period between 1-48 e.g. 42
 #'
 #' @return a data.frame with 1/2-hourly carbon intensity data for specified time period
 #' @export
 #'
 #' @examples \dontrun{
 #' get_british_ci()
-#' get_british_ci(date = '2019-12-31')
-#' get_british_ci(date = '2019-12-31', period = 48)
 #' get_british_ci(start = '2019-01-01', end = '2019-12-31')
 #' }
 get_british_ci <-
-  function(date = NULL,
-           period = NULL,
-           start = NULL,
+  function(start = NULL,
            end = NULL) {
     url <- 'https://api.carbonintensity.org.uk/intensity/'
 
-    if (!is.null(period) && !dplyr::between(period, 1, 48)) {
-      stop('period argument can only take values between 1 and 48')
-    }
-
-    if (all(is.null(c(start, end, date, period)))) {
+    if (all(is.null(c(start, end)))) {
       call <- url
-    } else if (all(!is.null(c(start, end))) &&
-               all(is.null(c(date, period)))) {
+    } else if (all(!is.null(c(start, end)))) {
       from_date <- paste0(as.Date(start), 'T00:00Z/')
       to_date <- paste0(as.Date(end), 'T23:59Z')
-      call <- paste0(url, from_date, to_date)
-    } else if (!is.null(date) &&
-               all(is.null(c(start, end, period)))) {
-      url <- paste0(url, 'date/')
-      call <- paste0(url, date)
-    } else if (all(!is.null(c(date, period))) &&
-               all(is.null(c(start, end)))) {
-      url <- paste0(url, 'date/')
-      call <- paste0(url, date, '/', period)
 
+      call <- paste0(url, from_date, to_date)
     } else {
       stop('Both start and end arguments have to be either NULL or in use')
     }
 
     data <- get_data(call)
 
-    clean_names <- gsub('intensity.', '', colnames(data))
-    colnames(data) <- clean_names
-
-    data <- data %>%
+    result <- data %>%
       dplyr::mutate(from = lubridate::ymd_hm(from),
                     to = lubridate::ymd_hm(to))
+
+    clean_names <- gsub('intensity.', '', colnames(result))
+    colnames(result) <- clean_names
+
+
 
     data
   }
@@ -62,49 +45,62 @@ get_british_ci <-
 #' Get Carbon Intensity data for current half hour for a specified GB Region
 #'
 #' @param region {character} The name of the GB region, one of 'England', 'Scotland' or 'Wales'
+#' @param start {character} A start date of the intesity
+#' @param end {character} An end date of the intesity data
 #'
 #' @return a tibble
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
+#' get_national_ci()
 #' get_national_ci('England')
 #' get_national_ci('Scotland')
 #' get_national_ci('Wales')
-get_national_ci <- function(region = NULL) {
-  if (!is.null(region) &&
-      !region %in%  c('England', 'Scotland', 'Wales')) {
-    stop("Region has to be either NULL or it must equate to one of 'England', 'Scotland', 'Wales'")
+#' get_national_ci(start = '2019-01-01', end = '2019-12-31')
+#' }
+get_national_ci <-
+  function(region = NULL,
+           start = NULL,
+           end = NULL) {
+    if (!is.null(region) &&
+        !region %in%  c('England', 'Scotland', 'Wales')) {
+      stop("Region has to be either NULL or it must equate to one of 'England', 'Scotland', 'Wales'")
+    }
+
+    url <- 'https://api.carbonintensity.org.uk/regional/'
+
+
+    if (all(is.null(c(region, start, end)))) {
+      call <- url
+    } else if (all(is.null(c(start, end)))) {
+      call <- paste0(url, tolower(region), '/')
+    } else if (all(!is.null(c(start, end)))) {
+
+      from_date <- paste0(as.Date(start), 'T00:00Z/')
+      to_date <- paste0(as.Date(end), 'T23:59Z')
+      call <- paste0(url, 'intensity/', from_date, to_date)
+    }
+
+    data <- get_data(call)
+
+    if (is.null(region)) {
+      unnest_var <- "regions"
+    } else {
+      unnest_var <- "data"
+    }
+
+    result <- data %>%
+      tidyr::unnest(unnest_var) %>%
+      tidyr::unnest(generationmix) %>%
+      dplyr::mutate(to = lubridate::ymd_hm(to),
+                    from = lubridate::ymd_hm(from))
+
+    clean_names <- gsub('intensity.', '', colnames(result))
+    colnames(result) <- clean_names
+
+    result
+
   }
-
-  url <- 'https://api.carbonintensity.org.uk/regional/'
-
-
-  if (is.null(region)) {
-    call <- url
-  } else {
-    call <- paste0(url, tolower(region), '/')
-  }
-
-  data <- get_data(call)
-
-  if (is.null(region)) {
-    unnest_var <- "regions"
-  } else {
-    unnest_var <- "data"
-  }
-
-  result <- data %>%
-    tidyr::unnest(unnest_var) %>%
-    tidyr::unnest(generationmix) %>%
-    dplyr::mutate(to = lubridate::ymd_hm(to),
-                  from = lubridate::ymd_hm(from))
-
-  clean_names <- gsub('intensity.', '', colnames(result))
-  colnames(result) <- clean_names
-
-  result
-
-}
 
 
 
@@ -117,16 +113,17 @@ get_national_ci <- function(region = NULL) {
 #' @return tibble
 #' @export
 #'
-#' @examples
+#' @examples \dontrun{
 #' get_postcode_ci(postcode = 'EN2')
 #' get_postcode_ci(postcode = 'EN2', start = '2019-01-01', end = '2019-01-02')
+#' }
 get_postcode_ci <- function(postcode,
                             start = NULL,
                             end = NULL) {
-  if (is.null(start) && is.null(end)) {
+  if (all(is.null(c(start, end)))) {
     url <- 'https://api.carbonintensity.org.uk/regional/postcode/'
     call <- paste0(url, postcode)
-  } else if (!is.null(start) && !is.null(end)) {
+  } else if (all(!is.null(c(start, end)))) {
     from_date <- paste0(as.Date(start), 'T00:00Z/')
     to_date <- paste0(as.Date(end), 'T23:59Z/')
 

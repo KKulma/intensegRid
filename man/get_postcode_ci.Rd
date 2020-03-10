@@ -20,6 +20,8 @@ tibble
 Get Regional Carbon Intensity data for current half hour for specified postcode.
 }
 \examples{
+\dontrun{
 get_postcode_ci(postcode = 'EN2')
 get_postcode_ci(postcode = 'EN2', start = '2019-01-01', end = '2019-01-02')
+}
 }
