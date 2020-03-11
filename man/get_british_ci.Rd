@@ -4,15 +4,10 @@
 \alias{get_british_ci}
 \title{Fetch British carbon intensity data for specified time period}
 \usage{
-get_british_ci(date = NULL, period = NULL, start = NULL,
-  end = NULL)
+get_british_ci(start = NULL, end = NULL)
 }
 \arguments{
-\item{date}{{character} A date for the intensity data}
-
-\item{period}{{numeric} Half hour settlement period between 1-48 e.g. 42}
-
-\item{start}{{character} A start date of the intesity data}
+\item{start}{{character} A start date of the intesity}
 
 \item{end}{{character} An end date of the intesity data}
 }
@@ -25,8 +20,6 @@ Fetch British carbon intensity data for specified time period
 \examples{
 \dontrun{
 get_british_ci()
-get_british_ci(date = '2019-12-31')
-get_british_ci(date = '2019-12-31', period = 48)
 get_british_ci(start = '2019-01-01', end = '2019-12-31')
 }
 }
