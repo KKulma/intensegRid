@@ -2,7 +2,7 @@
 % Please edit documentation in R/intensity.R
 \name{get_postcode_ci}
 \alias{get_postcode_ci}
-\title{Get Regional Carbon Intensity data for current half hour for specified postcode.}
+\title{Get Carbon Intensity for specified postcode.}
 \usage{
 get_postcode_ci(postcode, start = NULL, end = NULL)
 }
@@ -17,7 +17,7 @@ get_postcode_ci(postcode, start = NULL, end = NULL)
 tibble
 }
 \description{
-Get Regional Carbon Intensity data for current half hour for specified postcode.
+Get Carbon Intensity for specified postcode.
 }
 \examples{
 \dontrun{
