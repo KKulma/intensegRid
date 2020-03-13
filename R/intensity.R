@@ -30,12 +30,11 @@ get_british_ci <-
 
     result <- data %>%
       dplyr::mutate(from = lubridate::ymd_hm(from),
-                    to = lubridate::ymd_hm(to))
+                    to = lubridate::ymd_hm(to)) %>%
+      tibble::as.tibble()
 
     clean_names <- gsub('intensity.', '', colnames(result))
     colnames(result) <- clean_names
-
-
 
     data
   }
@@ -93,7 +92,8 @@ get_national_ci <-
       tidyr::unnest(unnest_var) %>%
       tidyr::unnest(generationmix) %>%
       dplyr::mutate(to = lubridate::ymd_hm(to),
-                    from = lubridate::ymd_hm(from))
+                    from = lubridate::ymd_hm(from)) %>%
+      tibble::as.tibble()
 
     clean_names <- gsub('intensity.', '', colnames(result))
     colnames(result) <- clean_names

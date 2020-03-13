@@ -1,6 +1,4 @@
 
-
-
 #' Get Carbon Intensity factors for each fuel type
 #'
 #' @return a tibble
@@ -28,35 +26,37 @@ get_factors <- function() {
 #' start <- "2019-04-01"
 #' end <- "2019-04-07"
 #' get_stats(start, end)
-#' get_stats(start, end, 2)
+#' get_stats(start, end, block = 2)
 #' }
 #'
 get_stats <- function(start, end, block = NULL) {
   url <- "https://api.carbonintensity.org.uk/intensity/stats/"
-
+  
   from_date <- paste0(as.Date(start), "T00:00Z/")
   to_date <- paste0(as.Date(end), "T23:59Z")
-
+  
   if (!is.null(block)) {
     call <- paste0(url, from_date, to_date, "/", block)
   } else {
     call <- paste0(url, from_date, to_date)
   }
-
+  
   data <- get_data(call)
-
+  
   if (!is.null(block)) {
-    result <- data
+    result <- tibble::as_tibble(data)
   } else {
     result <- data %>%
       dplyr::mutate(
-        from = lubridate::ymd_hm(!!rlang::sym("from")),
-        to = lubridate::ymd_hm(!!rlang::sym("to"))
-      )
+        from = lubridate::ymd_hm(from),
+        to = lubridate::ymd_hm(to)) %>% 
+      tibble::as_tibble()
   }
-
+  
   clean_names <- gsub('intensity.', '', colnames(result))
   colnames(result) <- clean_names
-
+  
   result
 }
+
+
