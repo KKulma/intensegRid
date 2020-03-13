@@ -28,11 +28,3 @@ get_data <- function(call) {
 
   data
 }
-
-
-unify_dates <- function(string) {
-  string %>%
-    as.character() %>%
-    gsub("[[:punct:]]", ., replacement = '') %>%
-    trimws()
-}
