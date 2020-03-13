@@ -14,7 +14,7 @@
 get_mix <- function(start = NULL, end = NULL) {
   url <- 'https://api.carbonintensity.org.uk/generation/'
 
-  if (!is.null(start) && !is.null(end)) {
+  if (all(!is.null(c(start, end)))) {
     from_date <- paste0(as.Date(start), "T00:00Z/")
     to_date <- paste0(as.Date(end), "T23:59Z")
 
@@ -23,33 +23,20 @@ get_mix <- function(start = NULL, end = NULL) {
     call <- url
   }
 
-  response <- httr::GET(call)
+  data <- get_data(call)
 
-  if (httr::http_type(response) != "application/json") {
-    stop("API did not return json", call. = FALSE)
-  }
-
-  if (response$status_code != 200) {
-    stop(paste0("ERROR: The status call is ", response$status_code))
-  }
-
-  response_content <-
-    httr::content(response, as = "text", encoding = "UTF-8")
-
-  data <-
-    jsonlite::fromJSON(response_content, flatten = TRUE)[[1]]
-
-  if (!is.null(start) && !is.null(end)) {
+  if (all(!is.null(c(start, end)))) {
     result <- data %>%
-      tidyr::unnest(!!rlang::sym("generationmix")) %>%
+      tidyr::unnest(generationmix) %>% 
       dplyr::mutate(
-        from = lubridate::ymd_hm(!!rlang::sym("from")),
-        to = lubridate::ymd_hm(!!rlang::sym("to"))
-      )
+        from = lubridate::ymd_hm(from),
+        to = lubridate::ymd_hm(to)) %>%
+          tibble::as_tibble()
   } else {
     result <- data$generationmix %>%
       dplyr::mutate(from = lubridate::ymd_hm(data$from),
-                    to = lubridate::ymd_hm(data$to))
+                    to = lubridate::ymd_hm(data$to)) %>%
+      tibble::as_tibble()
   }
 
   result
