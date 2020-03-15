@@ -24,7 +24,7 @@ Get Carbon Intensity statistics between from and to dates
 start <- "2019-04-01"
 end <- "2019-04-07"
 get_stats(start, end)
-get_stats(start, end, 2)
+get_stats(start, end, block = 2)
 }
 
 }

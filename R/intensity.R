@@ -30,14 +30,13 @@ get_british_ci <-
 
     result <- data %>%
       dplyr::mutate(from = lubridate::ymd_hm(from),
-                    to = lubridate::ymd_hm(to))
+                    to = lubridate::ymd_hm(to)) %>%
+      tibble::as.tibble()
 
     clean_names <- gsub('intensity.', '', colnames(result))
     colnames(result) <- clean_names
 
-
-
-    data
+    result
   }
 
 
@@ -93,7 +92,8 @@ get_national_ci <-
       tidyr::unnest(unnest_var) %>%
       tidyr::unnest(generationmix) %>%
       dplyr::mutate(to = lubridate::ymd_hm(to),
-                    from = lubridate::ymd_hm(from))
+                    from = lubridate::ymd_hm(from)) %>%
+      tibble::as.tibble()
 
     clean_names <- gsub('intensity.', '', colnames(result))
     colnames(result) <- clean_names
@@ -104,7 +104,7 @@ get_national_ci <-
 
 
 
-#' Get Regional Carbon Intensity data for current half hour for specified postcode.
+#' Get Carbon Intensity for specified postcode.
 #'
 #' @param postcode {character} Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only
 #' @param start {character} A start date of the intesity data
@@ -133,10 +133,14 @@ get_postcode_ci <- function(postcode,
 
   data <- get_data(call)
 
-  if (is.null(start) && is.null(end)) {
+  if (all(is.null(c(start, end)))) {
     result <- data %>%
       tidyr::unnest(data) %>%
-      tidyr::unnest(generationmix)
+      tidyr::unnest(generationmix) %>% 
+      dplyr::mutate(
+        from = lubridate::ymd_hm(from),
+        to = lubridate::ymd_hm(to)
+      )
   } else {
     result <- data$data %>%
       tidyr::unnest(generationmix) %>%
