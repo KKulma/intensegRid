@@ -1,0 +1,141 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# About
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The **intensegRid** package is an API wrapper for [National Grid's Carbon Intensity API](https://carbonintensity.org.uk/). The API provides information on national and regional carbon intensity - the amount of carbon emitted per unit of energy consumed - for the UK.
+
+## Installation
+
+You can install the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("KKulma/intensegRid")
+```
+## Examples
+
+Electricity is not made equal and it will have a smaller or greater carbon footprint, (or carbon intensity), depending on its source, :
+
+```{r example}
+library(intensegRid)
+
+# carbon intensity per electricity source
+get_factors()
+```
+
+### Carbon intensity for the whole UK
+Current carbon intensity
+```{r british1}
+## carbon intensity for the whole Britain for the current 1/2 hr period
+get_british_ci()
+```
+
+Current carbon intensity for specified dates 
+```{r british2}
+## function arguments
+start <- "2019-04-01"
+end <- "2019-04-07"
+
+get_british_ci(start, end)
+```
+
+If you want to understand the exact composition of the UK-wide electricity over time, you can use `get_mix()` function:
+
+```{r mix1}
+# electricity composition in the current 30 mins
+get_mix()
+```
+
+```{r mix2}
+# electricity composition for the specified dates
+get_mix(start, end)
+```
+
+Finally, you can access summarised carbon intensity statistics for the specified dates: 
+
+```{r stats}
+get_stats(start, end)
+```
+
+Additionally, you can add a `block` argument that will group the statistics by specified-length blocks, for example a block length of 2 (hrs over a 24 hr period) will return 12 items with the average, max, min for each 2 hr block.  
+```{r stats2}
+get_stats(start, end, block = 2)
+```
+
+
+
+### Carbon intensity per UK country
+
+**intensegRid** package allows you to access carbon intensity data per UK country, i.e. England, Scotland and Wales (Northern Ireland is not included) with `get_national_ci()`:
+```{r national1}
+# Current carbon intensity per UK country
+get_national_ci()
+```
+
+```{r national2}
+# Current carbon intensity for England 
+# Function also accepts region values: "Scotland" and "Wales"
+get_national_ci(region = "England")
+```
+
+```{r national3}
+# Carbon intensity for all the UK countries for specified dates 
+get_national_ci(start = start, end = end)
+```
+
+### Carbon intensity in UK regions
+The API allows you extract information for UK regions using `get_regional_ci()` function, that accepts `region_id` as a required argument. You can access a handy `region_id` lookup table as a package dataset:
+```{r regions_lookup}
+regions_lookup
+```
+
+For example, let's access the current carbon intensity for London: 
+```{r region1}
+get_regional_ci(region_id = 13)
+```
+
+Similarly to other functions in the package, `get_regional_ci()` also accepts `start` and `end` arguments:
+```{r region2}
+get_regional_ci(region_id = 13, 
+                start, 
+                end)
+```
+
+
+### Carbon intensity per postcode
+
+Finally, the API allows you to access carbon intensity data per postcode. However, it only accepts outward postcode, i.e. one or two letters, followed by one or two digits. For example, the following code will access the carbon intensity information for EN2 area for the current 1/2 hr: 
+```{r postcode1}
+get_postcode_ci("EN2")
+```
+
+As always, we can pass `start` and `end` arguments to the function to extend the time window: 
+```{r postcode2}
+get_postcode_ci(postcode = 'EN2',
+                start,
+                end)
+```
+
+## Limitations
+
+In its current form, the package only accepts dates as `start` or `end` inputs (as Dates or character string), but not timestamps. However you can easily filter the output of **intensegRid** functions using [dplyr](https://dplyr.tidyverse.org/) and [lubridate](https://lubridate.tidyverse.org/) packages.
+
+## Contribution
+This is an open-source project and it welcomes your contribution! Feel free to use and test the package and if you find a bug, please, report it as [an issue](https://github.com/KKulma/intensegRid/issues). You may want to go even a step further and fix an issue you just raised!
+
+If you're rather new to open source and git, [this repo](https://github.com/firstcontributions/first-contributions/blob/master/README.md) offers some easy to follow guidance on how to start. Thanks for your time and efforts!
