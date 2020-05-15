@@ -9,8 +9,8 @@
 #' @examples \dontrun{
 #' start <- "2019-04-01"
 #' end <- "2019-04-07"
-#' get_current_mix(start, end)
-#' get_current_mix()}
+#' get_mix(start, end)
+#' get_mix()}
 get_mix <- function(start = NULL, end = NULL) {
   url <- 'https://api.carbonintensity.org.uk/generation/'
 

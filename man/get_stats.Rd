@@ -7,9 +7,9 @@
 get_stats(start, end, block = NULL)
 }
 \arguments{
-\item{start}{{character} A start date of the stats data}
+\item{start}{{character} A start date of the stats data. The maximum date range is limited to 30 days.}
 
-\item{end}{{character} An end date of the stats data}
+\item{end}{{character} An end date of the stats data. The maximum date range is limited to 30 days.}
 
 \item{block}{{numeric} Block length in hours i.e. a block length of 2 hrs over a 24 hr period returns 12 items with the average, max, min for each 2 hr block}
 }
@@ -22,7 +22,7 @@ Get Carbon Intensity statistics between from and to dates
 \examples{
 \dontrun{
 start <- "2019-04-01"
-end <- "2019-04-07"
+end <- "2019-05-01"
 get_stats(start, end)
 get_stats(start, end, block = 2)
 }
