@@ -25,6 +25,6 @@ get_national_ci()
 get_national_ci('England')
 get_national_ci('Scotland')
 get_national_ci('Wales')
-get_national_ci(start = '2019-01-01', end = '2019-12-31')
+get_national_ci(start = '2019-01-01', end = '2019-01-02')
 }
 }

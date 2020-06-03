@@ -22,8 +22,10 @@ Imports:
     magrittr,
     tidyr,
     tibble,
-    rlang
+    rlang,
+    purrr
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 2.1.0)
 VignetteBuilder: knitr

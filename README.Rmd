@@ -121,7 +121,7 @@ get_regional_ci(region_id = 13,
 
 Finally, the API allows you to access carbon intensity data per postcode. However, it only accepts outward postcode, i.e. one or two letters, followed by one or two digits. For example, the following code will access the carbon intensity information for EN2 area for the current 1/2 hr: 
 ```{r postcode1}
-get_postcode_ci("EN2")
+get_postcode_ci(postcode = "EN2")
 ```
 
 As always, we can pass `start` and `end` arguments to the function to extend the time window: 
