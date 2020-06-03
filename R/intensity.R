@@ -1,14 +1,15 @@
 #' Fetch British carbon intensity data for specified time period
 #'
-#' @param start {character} A start date of the intesity
-#' @param end {character} An end date of the intesity data
+#' @param start {character} A start date of the intesity. 
+#' @param end {character} An end date of the intesity data. The maximum date range is limited to 14 days.
 #'
 #' @return a data.frame with 1/2-hourly carbon intensity data for specified time period
 #' @export
+#' @importFrom rlang .data 
 #'
 #' @examples \dontrun{
 #' get_british_ci()
-#' get_british_ci(start = '2019-01-01', end = '2019-12-31')
+#' get_british_ci(start = '2019-01-01', end = '2019-01-02')
 #' }
 get_british_ci <-
   function(start = NULL,
@@ -29,9 +30,9 @@ get_british_ci <-
     data <- get_data(call)
 
     result <- data %>%
-      dplyr::mutate(from = lubridate::ymd_hm(from),
-                    to = lubridate::ymd_hm(to)) %>%
-      tibble::as.tibble()
+      dplyr::mutate(from = lubridate::ymd_hm(.data$from),
+                    to = lubridate::ymd_hm(.data$to)) %>%
+      tibble::as_tibble()
 
     clean_names <- gsub('intensity.', '', colnames(result))
     colnames(result) <- clean_names
@@ -49,13 +50,14 @@ get_british_ci <-
 #'
 #' @return a tibble
 #' @export
+#'@importFrom rlang .data 
 #'
 #' @examples \dontrun{
 #' get_national_ci()
 #' get_national_ci('England')
 #' get_national_ci('Scotland')
 #' get_national_ci('Wales')
-#' get_national_ci(start = '2019-01-01', end = '2019-12-31')
+#' get_national_ci(start = '2019-01-01', end = '2019-01-02')
 #' }
 get_national_ci <-
   function(region = NULL,
@@ -90,10 +92,10 @@ get_national_ci <-
 
     result <- data %>%
       tidyr::unnest(unnest_var) %>%
-      tidyr::unnest(generationmix) %>%
-      dplyr::mutate(to = lubridate::ymd_hm(to),
-                    from = lubridate::ymd_hm(from)) %>%
-      tibble::as.tibble()
+      tidyr::unnest(.data$generationmix) %>%
+      dplyr::mutate(to = lubridate::ymd_hm(.data$to),
+                    from = lubridate::ymd_hm(.data$from)) %>%
+      tibble::as_tibble()
 
     clean_names <- gsub('intensity.', '', colnames(result))
     colnames(result) <- clean_names
@@ -113,6 +115,7 @@ get_national_ci <-
 #' @return tibble
 #' @export
 #'
+#' @importFrom rlang .data 
 #' @examples \dontrun{
 #' get_postcode_ci(postcode = 'EN2')
 #' get_postcode_ci(postcode = 'EN2', start = '2019-01-01', end = '2019-01-02')
@@ -135,23 +138,23 @@ get_postcode_ci <- function(postcode,
 
   if (all(is.null(c(start, end)))) {
     result <- data %>%
-      tidyr::unnest(data) %>%
-      tidyr::unnest(generationmix) %>% 
+      tidyr::unnest(.data$data) %>%
+      tidyr::unnest(.data$generationmix) %>% 
       dplyr::mutate(
-        from = lubridate::ymd_hm(from),
-        to = lubridate::ymd_hm(to)
+        from = lubridate::ymd_hm(.data$from),
+        to = lubridate::ymd_hm(.data$to)
       )
   } else {
     result <- data$data %>%
-      tidyr::unnest(generationmix) %>%
+      tidyr::unnest(.data$generationmix) %>%
       dplyr::mutate(
         region = data$regionid,
         shortname = data$shortname,
         postcode = data$postcode,
-        from = lubridate::ymd_hm(from),
-        to = lubridate::ymd_hm(to)
+        from = lubridate::ymd_hm(.data$from),
+        to = lubridate::ymd_hm(.data$to)
       ) %>%
-      dplyr::select(region, shortname, postcode, everything())
+      dplyr::select(.data$region, .data$shortname, .data$postcode, dplyr::everything())
   }
 
   clean_names <- gsub('intensity.', '', colnames(result))
@@ -168,6 +171,7 @@ get_postcode_ci <- function(postcode,
 #' @param start {character} A start date of the intesity data
 #' @param end {character} An end date of the intesity data
 #'
+#' @importFrom rlang .data  
 #' @return a tibble
 #' @export
 #'
@@ -198,20 +202,20 @@ get_regional_ci <- function(region_id,
   if (all(is.null(c(start, end))))
     result <- data %>%
     tidyr::unnest(data) %>%
-    tidyr::unnest(generationmix) %>%
-    dplyr::mutate(to = lubridate::ymd_hm(to),
-                  from = lubridate::ymd_hm(from))
+    tidyr::unnest(.data$generationmix) %>%
+    dplyr::mutate(to = lubridate::ymd_hm(.data$to),
+                  from = lubridate::ymd_hm(.data$from))
   else {
     result <- data$data %>%
-      tidyr::unnest(generationmix) %>%
+      tidyr::unnest(.data$generationmix) %>%
       dplyr::mutate(
         dnoregion = data$dnoregion,
         shortname = data$shortname,
         region_id = data$regionid,
-        from = lubridate::ymd_hm(from),
-        to = lubridate::ymd_hm(to)
+        from = lubridate::ymd_hm(.data$from),
+        to = lubridate::ymd_hm(.data$to)
       ) %>%
-      dplyr::select(dnoregion, shortname, region_id, everything())
+      dplyr::select(.data$dnoregion, .data$shortname, .data$region_id, dplyr::everything())
   }
 
   clean_names <- gsub('intensity.', '', colnames(result))

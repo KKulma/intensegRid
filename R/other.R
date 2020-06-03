@@ -23,6 +23,7 @@ get_factors <- function() {
 #' @return tibble
 #' @export
 #'
+#' @importFrom rlang .data
 #' @examples \dontrun{
 #' start <- "2019-04-01"
 #' end <- "2019-05-01"
@@ -47,8 +48,6 @@ get_stats <- function(start, end, block = NULL) {
     stop("Block value should not be lower than 1")
   }
   
-  
-  
   from_date <- paste0(as.Date(start), "T00:00Z/")
   to_date <- paste0(as.Date(end), "T23:59Z")
   
@@ -61,8 +60,8 @@ get_stats <- function(start, end, block = NULL) {
   data <- get_data(call)
   
   result <- data %>%
-    dplyr::mutate(from = lubridate::ymd_hm(from),
-                  to = lubridate::ymd_hm(to)) %>%
+    dplyr::mutate(from = lubridate::ymd_hm(.data$from),
+                  to = lubridate::ymd_hm(.data$to)) %>%
     tibble::as_tibble()
   
   

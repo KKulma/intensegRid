@@ -5,7 +5,7 @@
 #'
 #' @return tibble
 #' @export
-#'
+#' @importFrom rlang .data
 #' @examples \dontrun{
 #' start <- "2019-04-01"
 #' end <- "2019-04-07"
@@ -27,10 +27,10 @@ get_mix <- function(start = NULL, end = NULL) {
 
   if (all(!is.null(c(start, end)))) {
     result <- data %>%
-      tidyr::unnest(generationmix) %>% 
+      tidyr::unnest(.data$generationmix) %>% 
       dplyr::mutate(
-        from = lubridate::ymd_hm(from),
-        to = lubridate::ymd_hm(to)) %>%
+        from = lubridate::ymd_hm(.data$from),
+        to = lubridate::ymd_hm(.data$to)) %>%
           tibble::as_tibble()
   } else {
     result <- data$generationmix %>%
