@@ -7,9 +7,9 @@
 get_british_ci(start = NULL, end = NULL)
 }
 \arguments{
-\item{start}{{character} A start date of the intesity}
+\item{start}{{character} A start date of the intesity.}
 
-\item{end}{{character} An end date of the intesity data}
+\item{end}{{character} An end date of the intesity data. The maximum date range is limited to 14 days.}
 }
 \value{
 a data.frame with 1/2-hourly carbon intensity data for specified time period
@@ -20,6 +20,6 @@ Fetch British carbon intensity data for specified time period
 \examples{
 \dontrun{
 get_british_ci()
-get_british_ci(start = '2019-01-01', end = '2019-12-31')
+get_british_ci(start = '2019-01-01', end = '2019-01-02')
 }
 }

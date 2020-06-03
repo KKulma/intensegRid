@@ -22,7 +22,8 @@ Imports:
     magrittr,
     tidyr,
     tibble,
-    rlang
+    rlang,
+    purrr
 Suggests: 
     knitr,
     rmarkdown,
