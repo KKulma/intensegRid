@@ -59,7 +59,7 @@ get_british_ci()
 #> # A tibble: 1 x 5
 #>   from                to                  forecast actual index   
 #>   <dttm>              <dttm>                 <int>  <int> <chr>   
-#> 1 2020-03-15 21:00:00 2020-03-15 21:30:00      221    236 moderate
+#> 1 2020-06-03 14:00:00 2020-06-03 14:30:00      162    169 moderate
 ```
 
 Current carbon intensity for specified dates
@@ -95,15 +95,15 @@ get_mix()
 #> # A tibble: 9 x 4
 #>   fuel     perc from                to                 
 #>   <chr>   <dbl> <dttm>              <dttm>             
-#> 1 biomass   8.1 2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 2 coal      0   2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 3 imports  10.2 2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 4 gas      52.1 2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 5 nuclear  14.5 2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 6 other     0.7 2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 7 hydro     3.3 2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 8 solar     0   2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 9 wind     11.1 2020-03-15 21:00:00 2020-03-15 21:30:00
+#> 1 biomass  10.8 2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 2 coal      0   2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 3 imports   9.2 2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 4 gas      35.3 2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 5 nuclear  16.8 2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 6 other     0   2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 7 hydro     0.6 2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 8 solar     7.5 2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 9 wind     19.9 2020-06-03 14:00:00 2020-06-03 14:30:00
 ```
 
 ``` r
@@ -169,20 +169,20 @@ included) with `get_national_ci()`:
 # Current carbon intensity per UK country
 get_national_ci()
 #> # A tibble: 162 x 9
-#>    from                to                  regionid dnoregion shortname
-#>    <dttm>              <dttm>                 <int> <chr>     <chr>    
-#>  1 2020-03-15 21:00:00 2020-03-15 21:30:00        1 Scottish~ North Sc~
-#>  2 2020-03-15 21:00:00 2020-03-15 21:30:00        1 Scottish~ North Sc~
-#>  3 2020-03-15 21:00:00 2020-03-15 21:30:00        1 Scottish~ North Sc~
-#>  4 2020-03-15 21:00:00 2020-03-15 21:30:00        1 Scottish~ North Sc~
-#>  5 2020-03-15 21:00:00 2020-03-15 21:30:00        1 Scottish~ North Sc~
-#>  6 2020-03-15 21:00:00 2020-03-15 21:30:00        1 Scottish~ North Sc~
-#>  7 2020-03-15 21:00:00 2020-03-15 21:30:00        1 Scottish~ North Sc~
-#>  8 2020-03-15 21:00:00 2020-03-15 21:30:00        1 Scottish~ North Sc~
-#>  9 2020-03-15 21:00:00 2020-03-15 21:30:00        1 Scottish~ North Sc~
-#> 10 2020-03-15 21:00:00 2020-03-15 21:30:00        2 SP Distr~ South Sc~
-#> # ... with 152 more rows, and 4 more variables: fuel <chr>, perc <dbl>,
-#> #   forecast <int>, index <chr>
+#>    from                to                  regionid dnoregion shortname fuel 
+#>    <dttm>              <dttm>                 <int> <chr>     <chr>     <chr>
+#>  1 2020-06-03 14:00:00 2020-06-03 14:30:00        1 Scottish~ North Sc~ biom~
+#>  2 2020-06-03 14:00:00 2020-06-03 14:30:00        1 Scottish~ North Sc~ coal 
+#>  3 2020-06-03 14:00:00 2020-06-03 14:30:00        1 Scottish~ North Sc~ impo~
+#>  4 2020-06-03 14:00:00 2020-06-03 14:30:00        1 Scottish~ North Sc~ gas  
+#>  5 2020-06-03 14:00:00 2020-06-03 14:30:00        1 Scottish~ North Sc~ nucl~
+#>  6 2020-06-03 14:00:00 2020-06-03 14:30:00        1 Scottish~ North Sc~ other
+#>  7 2020-06-03 14:00:00 2020-06-03 14:30:00        1 Scottish~ North Sc~ hydro
+#>  8 2020-06-03 14:00:00 2020-06-03 14:30:00        1 Scottish~ North Sc~ solar
+#>  9 2020-06-03 14:00:00 2020-06-03 14:30:00        1 Scottish~ North Sc~ wind 
+#> 10 2020-06-03 14:00:00 2020-06-03 14:30:00        2 SP Distr~ South Sc~ biom~
+#> # ... with 152 more rows, and 3 more variables: perc <dbl>, forecast <int>,
+#> #   index <chr>
 ```
 
 ``` r
@@ -190,39 +190,38 @@ get_national_ci()
 # Function also accepts region values: "Scotland" and "Wales"
 get_national_ci(region = "England")
 #> # A tibble: 9 x 9
-#>   regionid dnoregion shortname from                to                 
-#>      <int> <chr>     <chr>     <dttm>              <dttm>             
-#> 1       15 England   England   2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 2       15 England   England   2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 3       15 England   England   2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 4       15 England   England   2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 5       15 England   England   2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 6       15 England   England   2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 7       15 England   England   2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 8       15 England   England   2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 9       15 England   England   2020-03-15 21:00:00 2020-03-15 21:30:00
-#> # ... with 4 more variables: fuel <chr>, perc <dbl>, forecast <int>,
-#> #   index <chr>
+#>   regionid dnoregion shortname from                to                  fuel 
+#>      <int> <chr>     <chr>     <dttm>              <dttm>              <chr>
+#> 1       15 England   England   2020-06-03 14:00:00 2020-06-03 14:30:00 biom~
+#> 2       15 England   England   2020-06-03 14:00:00 2020-06-03 14:30:00 coal 
+#> 3       15 England   England   2020-06-03 14:00:00 2020-06-03 14:30:00 impo~
+#> 4       15 England   England   2020-06-03 14:00:00 2020-06-03 14:30:00 gas  
+#> 5       15 England   England   2020-06-03 14:00:00 2020-06-03 14:30:00 nucl~
+#> 6       15 England   England   2020-06-03 14:00:00 2020-06-03 14:30:00 other
+#> 7       15 England   England   2020-06-03 14:00:00 2020-06-03 14:30:00 hydro
+#> 8       15 England   England   2020-06-03 14:00:00 2020-06-03 14:30:00 solar
+#> 9       15 England   England   2020-06-03 14:00:00 2020-06-03 14:30:00 wind 
+#> # ... with 3 more variables: perc <dbl>, forecast <int>, index <chr>
 ```
 
 ``` r
 # Carbon intensity for all the UK countries for specified dates 
 get_national_ci(start = start, end = end)
 #> # A tibble: 54,432 x 9
-#>    from                to                  regionid dnoregion shortname
-#>    <dttm>              <dttm>                 <int> <chr>     <chr>    
-#>  1 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~
-#>  2 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~
-#>  3 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~
-#>  4 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~
-#>  5 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~
-#>  6 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~
-#>  7 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~
-#>  8 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~
-#>  9 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~
-#> 10 2019-03-31 23:30:00 2019-04-01 00:00:00        2 SP Distr~ South Sc~
-#> # ... with 54,422 more rows, and 4 more variables: fuel <chr>, perc <dbl>,
-#> #   forecast <int>, index <chr>
+#>    from                to                  regionid dnoregion shortname fuel 
+#>    <dttm>              <dttm>                 <int> <chr>     <chr>     <chr>
+#>  1 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~ biom~
+#>  2 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~ coal 
+#>  3 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~ impo~
+#>  4 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~ gas  
+#>  5 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~ nucl~
+#>  6 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~ other
+#>  7 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~ hydro
+#>  8 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~ solar
+#>  9 2019-03-31 23:30:00 2019-04-01 00:00:00        1 Scottish~ North Sc~ wind 
+#> 10 2019-03-31 23:30:00 2019-04-01 00:00:00        2 SP Distr~ South Sc~ biom~
+#> # ... with 54,422 more rows, and 3 more variables: perc <dbl>, forecast <int>,
+#> #   index <chr>
 ```
 
 ### Carbon intensity in UK regions
@@ -259,19 +258,18 @@ For example, let’s access the current carbon intensity for London:
 ``` r
 get_regional_ci(region_id = 13)
 #> # A tibble: 9 x 9
-#>   regionid dnoregion shortname from                to                 
-#>      <int> <chr>     <chr>     <dttm>              <dttm>             
-#> 1       13 UKPN Lon~ London    2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 2       13 UKPN Lon~ London    2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 3       13 UKPN Lon~ London    2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 4       13 UKPN Lon~ London    2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 5       13 UKPN Lon~ London    2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 6       13 UKPN Lon~ London    2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 7       13 UKPN Lon~ London    2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 8       13 UKPN Lon~ London    2020-03-15 21:00:00 2020-03-15 21:30:00
-#> 9       13 UKPN Lon~ London    2020-03-15 21:00:00 2020-03-15 21:30:00
-#> # ... with 4 more variables: fuel <chr>, perc <dbl>, forecast <int>,
-#> #   index <chr>
+#>   regionid dnoregion shortname from                to                  fuel 
+#>      <int> <chr>     <chr>     <dttm>              <dttm>              <chr>
+#> 1       13 UKPN Lon~ London    2020-06-03 14:00:00 2020-06-03 14:30:00 biom~
+#> 2       13 UKPN Lon~ London    2020-06-03 14:00:00 2020-06-03 14:30:00 coal 
+#> 3       13 UKPN Lon~ London    2020-06-03 14:00:00 2020-06-03 14:30:00 impo~
+#> 4       13 UKPN Lon~ London    2020-06-03 14:00:00 2020-06-03 14:30:00 gas  
+#> 5       13 UKPN Lon~ London    2020-06-03 14:00:00 2020-06-03 14:30:00 nucl~
+#> 6       13 UKPN Lon~ London    2020-06-03 14:00:00 2020-06-03 14:30:00 other
+#> 7       13 UKPN Lon~ London    2020-06-03 14:00:00 2020-06-03 14:30:00 hydro
+#> 8       13 UKPN Lon~ London    2020-06-03 14:00:00 2020-06-03 14:30:00 solar
+#> 9       13 UKPN Lon~ London    2020-06-03 14:00:00 2020-06-03 14:30:00 wind 
+#> # ... with 3 more variables: perc <dbl>, forecast <int>, index <chr>
 ```
 
 Similarly to other functions in the package, `get_regional_ci()` also
@@ -282,20 +280,20 @@ get_regional_ci(region_id = 13,
                 start, 
                 end)
 #> # A tibble: 3,024 x 9
-#>    dnoregion shortname region_id from                to                 
-#>    <chr>     <chr>         <int> <dttm>              <dttm>             
-#>  1 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00
-#>  2 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00
-#>  3 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00
-#>  4 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00
-#>  5 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00
-#>  6 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00
-#>  7 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00
-#>  8 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00
-#>  9 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00
-#> 10 UKPN Lon~ London           13 2019-04-01 00:00:00 2019-04-01 00:30:00
-#> # ... with 3,014 more rows, and 4 more variables: fuel <chr>, perc <dbl>,
-#> #   forecast <int>, index <chr>
+#>    dnoregion shortname region_id from                to                  fuel 
+#>    <chr>     <chr>         <int> <dttm>              <dttm>              <chr>
+#>  1 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00 biom~
+#>  2 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00 coal 
+#>  3 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00 impo~
+#>  4 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00 gas  
+#>  5 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00 nucl~
+#>  6 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00 other
+#>  7 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00 hydro
+#>  8 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00 solar
+#>  9 UKPN Lon~ London           13 2019-03-31 23:30:00 2019-04-01 00:00:00 wind 
+#> 10 UKPN Lon~ London           13 2019-04-01 00:00:00 2019-04-01 00:30:00 biom~
+#> # ... with 3,014 more rows, and 3 more variables: perc <dbl>, forecast <int>,
+#> #   index <chr>
 ```
 
 ### Carbon intensity per postcode
@@ -307,21 +305,21 @@ will access the carbon intensity information for EN2 area for the
 current 1/2 hr:
 
 ``` r
-get_postcode_ci("EN2")
+get_postcode_ci(postcode = "EN2")
 #> # A tibble: 9 x 10
-#>   regionid dnoregion shortname postcode from               
-#>      <int> <chr>     <chr>     <chr>    <dttm>             
-#> 1        9 UKPN East East Eng~ EN2      2020-03-15 21:00:00
-#> 2        9 UKPN East East Eng~ EN2      2020-03-15 21:00:00
-#> 3        9 UKPN East East Eng~ EN2      2020-03-15 21:00:00
-#> 4        9 UKPN East East Eng~ EN2      2020-03-15 21:00:00
-#> 5        9 UKPN East East Eng~ EN2      2020-03-15 21:00:00
-#> 6        9 UKPN East East Eng~ EN2      2020-03-15 21:00:00
-#> 7        9 UKPN East East Eng~ EN2      2020-03-15 21:00:00
-#> 8        9 UKPN East East Eng~ EN2      2020-03-15 21:00:00
-#> 9        9 UKPN East East Eng~ EN2      2020-03-15 21:00:00
-#> # ... with 5 more variables: to <dttm>, fuel <chr>, perc <dbl>,
-#> #   forecast <int>, index <chr>
+#>   regionid dnoregion shortname postcode from                to                 
+#>      <int> <chr>     <chr>     <chr>    <dttm>              <dttm>             
+#> 1        9 UKPN East East Eng~ EN2      2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 2        9 UKPN East East Eng~ EN2      2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 3        9 UKPN East East Eng~ EN2      2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 4        9 UKPN East East Eng~ EN2      2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 5        9 UKPN East East Eng~ EN2      2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 6        9 UKPN East East Eng~ EN2      2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 7        9 UKPN East East Eng~ EN2      2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 8        9 UKPN East East Eng~ EN2      2020-06-03 14:00:00 2020-06-03 14:30:00
+#> 9        9 UKPN East East Eng~ EN2      2020-06-03 14:00:00 2020-06-03 14:30:00
+#> # ... with 4 more variables: fuel <chr>, perc <dbl>, forecast <int>,
+#> #   index <chr>
 ```
 
 As always, we can pass `start` and `end` arguments to the function to
@@ -332,20 +330,19 @@ get_postcode_ci(postcode = 'EN2',
                 start,
                 end)
 #> # A tibble: 3,024 x 9
-#>    region shortname postcode from                to                  fuel 
-#>     <int> <chr>     <chr>    <dttm>              <dttm>              <chr>
-#>  1     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 biom~
-#>  2     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 coal 
-#>  3     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 impo~
-#>  4     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 gas  
-#>  5     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 nucl~
-#>  6     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 other
-#>  7     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 hydro
-#>  8     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 solar
-#>  9     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 wind 
-#> 10     10 East Eng~ EN2      2019-04-01 00:00:00 2019-04-01 00:30:00 biom~
-#> # ... with 3,014 more rows, and 3 more variables: perc <dbl>,
-#> #   forecast <int>, index <chr>
+#>    region shortname postcode from                to                  fuel   perc
+#>     <int> <chr>     <chr>    <dttm>              <dttm>              <chr> <dbl>
+#>  1     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 biom~   0  
+#>  2     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 coal    0  
+#>  3     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 impo~   3.3
+#>  4     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 gas     8.7
+#>  5     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 nucl~  42.1
+#>  6     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 other   0  
+#>  7     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 hydro   0  
+#>  8     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 solar   0  
+#>  9     10 East Eng~ EN2      2019-03-31 23:30:00 2019-04-01 00:00:00 wind   45.9
+#> 10     10 East Eng~ EN2      2019-04-01 00:00:00 2019-04-01 00:30:00 biom~   0.2
+#> # ... with 3,014 more rows, and 2 more variables: forecast <int>, index <chr>
 ```
 
 ## Limitations
