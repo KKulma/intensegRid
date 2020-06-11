@@ -25,7 +25,7 @@ remotes::install_github("KKulma/intensegRid")
 ## Examples
 
 For examples on how to use **intensegRid** package refer to the articles
-on the [pkgdown website]().
+on the [pkgdown website](https://kkulma.github.io/intensegRid/).
 
 ## Limitations
 
