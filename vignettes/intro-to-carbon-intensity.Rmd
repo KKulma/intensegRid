@@ -1,5 +1,5 @@
 ---
-title: "intro-to-carbon-intensity"
+title: "Carbon intensity with intensegRid"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{intro-to-carbon-intensity}
@@ -14,97 +14,104 @@ knitr::opts_chunk$set(
 )
 ```
 
-1. British
-  + for a current 1/2 hour **[no arguments]**
-  + for today (date; can be merged with below) **[date = today()]**
-  + for a given date (date; can be merged with above) **[date = specified_date]**
-  + for a given date and time (date, period) **[date = specified_date, period = specified_period]**
-  + for a specifc 1/2 hour period (from = datetime) **[date = specified_date, period = specified_period]**
-  +- for a given 24-hr period (forward or past) **[start = date/datetime, end = date/datetime]**
-  +- for a given 48-hr period (forward or past) **[start = date/datetime, end = date/datetime]**
-  +- between different datetimes (start, end) **[start = date/datetime, end = date/datetime]**
+Electricity is not made equal and it will have a smaller or greater carbon footprint, (or carbon intensity), depending on its source, :
 
-2. National
-  + for the current 1/2 hr for all the regions  **[no arguments]**
-  + for the current 1/2 hr, for england  **[country = "England"]**
-  + for the current 1/2 hr, for scotland **[country = "Scotland"]**
-  + for the current 1/2 hr, for wales **[country = "Wales"]**
-  
-  
-3. Regional  
-
-  + for the current 1/2 hr, for a specified region **[region = "13"]**
-  * for the next 24 hrs, for all the regions (from a specified datetime) **[start, end]** 
-  + for the next 24 hrs, for a specified region **[start = date/datetime, end = date/datetime, region = "13"]** 
-  * for the next 48 hrs, for all the regions (from a specified datetime) **[start = date/datetime, end = date/datetime]**
-  * for the next 48 hrs, for a specified region **[start = date/datetime, end = date/datetime, region = "13"]** 
-  + for the past 24 hours, for all the regions  **[start = date/datetime, end = date/datetime, region = "13"]** 
-  + for the past 24 hours, for a specified region **[start = date/datetime, end = date/datetime, region = "13"]** 
-  * for the time beteen the two datetimes, for all the regions **[start = date/datetime, end = date/datetime]** 
-  + for the time beteen the two datetimes, for a specified region **[start = date/datetime, end = date/datetime, region = 13]** 
-  
-  
-4. Postcode  
-  + for the current 1/2 hr, for a specified postcode **[postcode = "SW1"]**
-  + for the next 48 hrs, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
-  + for the next 24 hrs, for a specified postcode **[postcode = "SW1", start, end]** 
-
-  + for the past 24 hours, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
-  + for the time beteen the two datetimes, for a specified postcode **[start = date/datetime, end = date/datetime, postcode = "SW1"]** 
-
-
-3. stats
-  +- stats for the period between two datetimes **[start = date(-datetime), end = date/datetime]**
-  +- stats per block (defined time intervals) between two  **[start = date(-datetime), end = date (-datetime), block = 2]**
-
-4. generationmix
-  + for the current 1/2 hr **[no arguments]**
-  +- for the past 24 hrs (from) **[start = date(-datetime), end = date(-datetime)]**
-  +- between the two datetimes **[start = date(-datetime), end = date(-datetime)]**
-
-5. others
-  + region lookup - export as data
-  
-
-```{r setup}
+```{r example}
 library(intensegRid)
+
+# carbon intensity per electricity source
+get_factors()
 ```
 
-```{r ex1}
-### intensity ------------
+### Carbon intensity for the whole UK
+Current carbon intensity
+```{r british1}
+## carbon intensity for the whole Britain for the current 1/2 hr period
+get_british_ci()
+```
+
+Current carbon intensity for specified dates 
+```{r british2}
 ## function arguments
 start <- "2019-04-01"
 end <- "2019-04-07"
 
+get_british_ci(start, end)
 ```
 
+If you want to understand the exact composition of the UK-wide electricity over time, you can use `get_mix()` function:
 
-```{r ex3}
-## 
-get_stats(start, end)
-get_stats(start, end, block = "2")
-```
-
-```{r ex4}
-## 
+```{r mix1}
+# electricity composition in the current 30 mins
 get_mix()
+```
+
+```{r mix2}
+# electricity composition for the specified dates
 get_mix(start, end)
 ```
 
-```{r ex5}
-## 
-get_factors()
+Finally, you can access summarised carbon intensity statistics for the specified dates: 
+
+```{r stats}
+get_stats(start, end)
 ```
 
-```{r ex6}
-## 
-get_postcode_ci("EN2")
+Additionally, you can add a `block` argument that will group the statistics by specified-length blocks, for example a block length of 2 (hrs over a 24 hr period) will return 12 items with the average, max, min for each 2 hr block.  
+```{r stats2}
+get_stats(start, end, block = 2)
 ```
 
-```{r ex7}
-## 
+
+
+### Carbon intensity per UK country
+
+**intensegRid** package allows you to access carbon intensity data per UK country, i.e. England, Scotland and Wales (Northern Ireland is not included) with `get_national_ci()`:
+```{r national1}
+# Current carbon intensity per UK country
 get_national_ci()
-get_national_ci("England")
-get_national_ci("Scotland")
-get_national_ci("Wales")
+```
+
+```{r national2}
+# Current carbon intensity for England 
+# Function also accepts region values: "Scotland" and "Wales"
+get_national_ci(region = "England")
+```
+
+```{r national3}
+# Carbon intensity for all the UK countries for specified dates 
+get_national_ci(start = start, end = end)
+```
+
+### Carbon intensity in UK regions
+The API allows you extract information for UK regions using `get_regional_ci()` function, that accepts `region_id` as a required argument. You can access a handy `region_id` lookup table as a package dataset:
+```{r regions_lookup}
+regions_lookup
+```
+
+For example, let's access the current carbon intensity for London: 
+```{r region1}
+get_regional_ci(region_id = 13)
+```
+
+Similarly to other functions in the package, `get_regional_ci()` also accepts `start` and `end` arguments:
+```{r region2}
+get_regional_ci(region_id = 13, 
+                start, 
+                end)
+```
+
+
+### Carbon intensity per postcode
+
+Finally, the API allows you to access carbon intensity data per postcode. However, it only accepts outward postcode, i.e. one or two letters, followed by one or two digits. For example, the following code will access the carbon intensity information for EN2 area for the current 1/2 hr: 
+```{r postcode1}
+get_postcode_ci(postcode = "EN2")
+```
+
+As always, we can pass `start` and `end` arguments to the function to extend the time window: 
+```{r postcode2}
+get_postcode_ci(postcode = 'EN2',
+                start,
+                end)
 ```
