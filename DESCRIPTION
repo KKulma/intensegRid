@@ -2,11 +2,10 @@ Package: intensegRid
 Type: Package
 Title: R Wrapper for the Carbon Intensity API
 Version: 0.1.0
-Author: person("Kasia", "Kulma", email = "katarzyna.kulma@gmail.com",
-                  role = c("aut", "cre"))
+Author: Kasia Kulma <katarzyna.kulma@gmail.com>
 Maintainer: Kasia Kulma <katarzyna.kulma@gmail.com>
-Description: The package allows to query and access data provided by the 
-    Carbon Intensity API (https://carbonintensity.org.uk/). National Grid’s Carbon Intensity API 
+Description: This package allows to query and access data provided by the 
+    Carbon Intensity API (<https://carbonintensity.org.uk/>). National Grid’s Carbon Intensity API 
     provides an indicative trend of regional carbon intensity of the electricity system in Great Britain.  
 License: CC0
 Encoding: UTF-8
