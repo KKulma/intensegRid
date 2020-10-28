@@ -7,7 +7,7 @@
 
 <!-- badges: end -->
 
-The **intensegRid** package is an API wrapper for [National Grid’s
+This package is an API wrapper for [National Grid’s
 Carbon Intensity API](https://carbonintensity.org.uk/). The API provides
 information on national and regional carbon intensity - the amount of
 carbon emitted per unit of energy consumed - for the UK.
