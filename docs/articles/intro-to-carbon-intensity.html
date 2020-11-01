@@ -82,7 +82,7 @@
 
     
     
-<p>Electricity is not made equal and it will have a smaller or greater carbon footprint (or carbon intensity) depending on its source, :</p>
+<p>Electricity is not made equal and it will have a smaller or greater carbon footprint (or carbon intensity) depending on its source:</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">intensegRid</span>)
 
 <span class="co"># carbon intensity per electricity source</span>
@@ -111,7 +111,7 @@
 <span class="co">#&gt; # A tibble: 1 x 5</span>
 <span class="co">#&gt;   from                to                  forecast actual index</span>
 <span class="co">#&gt;   &lt;dttm&gt;              &lt;dttm&gt;                 &lt;int&gt;  &lt;int&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 2020-10-28 21:30:00 2020-10-28 22:00:00      102    106 low</span></pre></body></html></div>
+<span class="co">#&gt; 1 2020-11-01 21:00:00 2020-11-01 21:30:00       92     88 low</span></pre></body></html></div>
 <p>Current carbon intensity for specified dates</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co">## function arguments</span>
 <span class="no">start</span> <span class="kw">&lt;-</span> <span class="st">"2019-04-01"</span>
@@ -138,15 +138,15 @@
 <span class="co">#&gt; # A tibble: 9 x 4</span>
 <span class="co">#&gt;   fuel     perc from                to                 </span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dttm&gt;              &lt;dttm&gt;             </span>
-<span class="co">#&gt; 1 biomass   6   2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 2 coal      0   2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 3 imports   8.3 2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 4 gas      26.8 2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 5 nuclear  20.3 2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 6 other     0   2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 7 hydro     2.6 2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 8 solar     0   2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 9 wind     36.2 2020-10-28 21:30:00 2020-10-28 22:00:00</span></pre></body></html></div>
+<span class="co">#&gt; 1 biomass   6.4 2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 2 coal      0   2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 3 imports   9.7 2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 4 gas      20.4 2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 5 nuclear  20.9 2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 6 other     0   2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 7 hydro     3.4 2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 8 solar     0   2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 9 wind     39.1 2020-11-01 21:00:00 2020-11-01 21:30:00</span></pre></body></html></div>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co"># electricity composition for the specified dates</span>
 <span class="fu"><a href="../reference/get_mix.html">get_mix</a></span>(<span class="no">start</span>, <span class="no">end</span>)
 <span class="co">#&gt; # A tibble: 3,024 x 4</span>
@@ -195,16 +195,16 @@
 <span class="co">#&gt; # A tibble: 162 x 9</span>
 <span class="co">#&gt;    from                to                  regionid dnoregion shortname fuel </span>
 <span class="co">#&gt;    &lt;dttm&gt;              &lt;dttm&gt;                 &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;</span>
-<span class="co">#&gt;  1 2020-10-28 21:30:00 2020-10-28 22:00:00        1 Scottish~ North Sc~ biom~</span>
-<span class="co">#&gt;  2 2020-10-28 21:30:00 2020-10-28 22:00:00        1 Scottish~ North Sc~ coal </span>
-<span class="co">#&gt;  3 2020-10-28 21:30:00 2020-10-28 22:00:00        1 Scottish~ North Sc~ impo~</span>
-<span class="co">#&gt;  4 2020-10-28 21:30:00 2020-10-28 22:00:00        1 Scottish~ North Sc~ gas  </span>
-<span class="co">#&gt;  5 2020-10-28 21:30:00 2020-10-28 22:00:00        1 Scottish~ North Sc~ nucl~</span>
-<span class="co">#&gt;  6 2020-10-28 21:30:00 2020-10-28 22:00:00        1 Scottish~ North Sc~ other</span>
-<span class="co">#&gt;  7 2020-10-28 21:30:00 2020-10-28 22:00:00        1 Scottish~ North Sc~ hydro</span>
-<span class="co">#&gt;  8 2020-10-28 21:30:00 2020-10-28 22:00:00        1 Scottish~ North Sc~ solar</span>
-<span class="co">#&gt;  9 2020-10-28 21:30:00 2020-10-28 22:00:00        1 Scottish~ North Sc~ wind </span>
-<span class="co">#&gt; 10 2020-10-28 21:30:00 2020-10-28 22:00:00        2 SP Distr~ South Sc~ biom~</span>
+<span class="co">#&gt;  1 2020-11-01 21:00:00 2020-11-01 21:30:00        1 Scottish~ North Sc~ biom~</span>
+<span class="co">#&gt;  2 2020-11-01 21:00:00 2020-11-01 21:30:00        1 Scottish~ North Sc~ coal </span>
+<span class="co">#&gt;  3 2020-11-01 21:00:00 2020-11-01 21:30:00        1 Scottish~ North Sc~ impo~</span>
+<span class="co">#&gt;  4 2020-11-01 21:00:00 2020-11-01 21:30:00        1 Scottish~ North Sc~ gas  </span>
+<span class="co">#&gt;  5 2020-11-01 21:00:00 2020-11-01 21:30:00        1 Scottish~ North Sc~ nucl~</span>
+<span class="co">#&gt;  6 2020-11-01 21:00:00 2020-11-01 21:30:00        1 Scottish~ North Sc~ other</span>
+<span class="co">#&gt;  7 2020-11-01 21:00:00 2020-11-01 21:30:00        1 Scottish~ North Sc~ hydro</span>
+<span class="co">#&gt;  8 2020-11-01 21:00:00 2020-11-01 21:30:00        1 Scottish~ North Sc~ solar</span>
+<span class="co">#&gt;  9 2020-11-01 21:00:00 2020-11-01 21:30:00        1 Scottish~ North Sc~ wind </span>
+<span class="co">#&gt; 10 2020-11-01 21:00:00 2020-11-01 21:30:00        2 SP Distr~ South Sc~ biom~</span>
 <span class="co">#&gt; # ... with 152 more rows, and 3 more variables: perc &lt;dbl&gt;, forecast &lt;int&gt;,</span>
 <span class="co">#&gt; #   index &lt;chr&gt;</span></pre></body></html></div>
 <div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="co"># Current carbon intensity for England </span>
@@ -213,15 +213,15 @@
 <span class="co">#&gt; # A tibble: 9 x 9</span>
 <span class="co">#&gt;   regionid dnoregion shortname from                to                  fuel </span>
 <span class="co">#&gt;      &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;dttm&gt;              &lt;dttm&gt;              &lt;chr&gt;</span>
-<span class="co">#&gt; 1       15 England   England   2020-10-28 21:30:00 2020-10-28 22:00:00 biom~</span>
-<span class="co">#&gt; 2       15 England   England   2020-10-28 21:30:00 2020-10-28 22:00:00 coal </span>
-<span class="co">#&gt; 3       15 England   England   2020-10-28 21:30:00 2020-10-28 22:00:00 impo~</span>
-<span class="co">#&gt; 4       15 England   England   2020-10-28 21:30:00 2020-10-28 22:00:00 gas  </span>
-<span class="co">#&gt; 5       15 England   England   2020-10-28 21:30:00 2020-10-28 22:00:00 nucl~</span>
-<span class="co">#&gt; 6       15 England   England   2020-10-28 21:30:00 2020-10-28 22:00:00 other</span>
-<span class="co">#&gt; 7       15 England   England   2020-10-28 21:30:00 2020-10-28 22:00:00 hydro</span>
-<span class="co">#&gt; 8       15 England   England   2020-10-28 21:30:00 2020-10-28 22:00:00 solar</span>
-<span class="co">#&gt; 9       15 England   England   2020-10-28 21:30:00 2020-10-28 22:00:00 wind </span>
+<span class="co">#&gt; 1       15 England   England   2020-11-01 21:00:00 2020-11-01 21:30:00 biom~</span>
+<span class="co">#&gt; 2       15 England   England   2020-11-01 21:00:00 2020-11-01 21:30:00 coal </span>
+<span class="co">#&gt; 3       15 England   England   2020-11-01 21:00:00 2020-11-01 21:30:00 impo~</span>
+<span class="co">#&gt; 4       15 England   England   2020-11-01 21:00:00 2020-11-01 21:30:00 gas  </span>
+<span class="co">#&gt; 5       15 England   England   2020-11-01 21:00:00 2020-11-01 21:30:00 nucl~</span>
+<span class="co">#&gt; 6       15 England   England   2020-11-01 21:00:00 2020-11-01 21:30:00 other</span>
+<span class="co">#&gt; 7       15 England   England   2020-11-01 21:00:00 2020-11-01 21:30:00 hydro</span>
+<span class="co">#&gt; 8       15 England   England   2020-11-01 21:00:00 2020-11-01 21:30:00 solar</span>
+<span class="co">#&gt; 9       15 England   England   2020-11-01 21:00:00 2020-11-01 21:30:00 wind </span>
 <span class="co">#&gt; # ... with 3 more variables: perc &lt;dbl&gt;, forecast &lt;int&gt;, index &lt;chr&gt;</span></pre></body></html></div>
 <div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="co"># Carbon intensity for all the UK countries for specified dates </span>
 <span class="fu"><a href="../reference/get_national_ci.html">get_national_ci</a></span>(<span class="kw">start</span> <span class="kw">=</span> <span class="no">start</span>, <span class="kw">end</span> <span class="kw">=</span> <span class="no">end</span>)
@@ -269,15 +269,15 @@
 <span class="co">#&gt; # A tibble: 9 x 9</span>
 <span class="co">#&gt;   regionid dnoregion shortname from                to                  fuel </span>
 <span class="co">#&gt;      &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;dttm&gt;              &lt;dttm&gt;              &lt;chr&gt;</span>
-<span class="co">#&gt; 1       13 UKPN Lon~ London    2020-10-28 21:30:00 2020-10-28 22:00:00 biom~</span>
-<span class="co">#&gt; 2       13 UKPN Lon~ London    2020-10-28 21:30:00 2020-10-28 22:00:00 coal </span>
-<span class="co">#&gt; 3       13 UKPN Lon~ London    2020-10-28 21:30:00 2020-10-28 22:00:00 impo~</span>
-<span class="co">#&gt; 4       13 UKPN Lon~ London    2020-10-28 21:30:00 2020-10-28 22:00:00 gas  </span>
-<span class="co">#&gt; 5       13 UKPN Lon~ London    2020-10-28 21:30:00 2020-10-28 22:00:00 nucl~</span>
-<span class="co">#&gt; 6       13 UKPN Lon~ London    2020-10-28 21:30:00 2020-10-28 22:00:00 other</span>
-<span class="co">#&gt; 7       13 UKPN Lon~ London    2020-10-28 21:30:00 2020-10-28 22:00:00 hydro</span>
-<span class="co">#&gt; 8       13 UKPN Lon~ London    2020-10-28 21:30:00 2020-10-28 22:00:00 solar</span>
-<span class="co">#&gt; 9       13 UKPN Lon~ London    2020-10-28 21:30:00 2020-10-28 22:00:00 wind </span>
+<span class="co">#&gt; 1       13 UKPN Lon~ London    2020-11-01 21:00:00 2020-11-01 21:30:00 biom~</span>
+<span class="co">#&gt; 2       13 UKPN Lon~ London    2020-11-01 21:00:00 2020-11-01 21:30:00 coal </span>
+<span class="co">#&gt; 3       13 UKPN Lon~ London    2020-11-01 21:00:00 2020-11-01 21:30:00 impo~</span>
+<span class="co">#&gt; 4       13 UKPN Lon~ London    2020-11-01 21:00:00 2020-11-01 21:30:00 gas  </span>
+<span class="co">#&gt; 5       13 UKPN Lon~ London    2020-11-01 21:00:00 2020-11-01 21:30:00 nucl~</span>
+<span class="co">#&gt; 6       13 UKPN Lon~ London    2020-11-01 21:00:00 2020-11-01 21:30:00 other</span>
+<span class="co">#&gt; 7       13 UKPN Lon~ London    2020-11-01 21:00:00 2020-11-01 21:30:00 hydro</span>
+<span class="co">#&gt; 8       13 UKPN Lon~ London    2020-11-01 21:00:00 2020-11-01 21:30:00 solar</span>
+<span class="co">#&gt; 9       13 UKPN Lon~ London    2020-11-01 21:00:00 2020-11-01 21:30:00 wind </span>
 <span class="co">#&gt; # ... with 3 more variables: perc &lt;dbl&gt;, forecast &lt;int&gt;, index &lt;chr&gt;</span></pre></body></html></div>
 <p>Similarly to other functions in the package, <code><a href="../reference/get_regional_ci.html">get_regional_ci()</a></code> also accepts <code>start</code> and <code>end</code> arguments:</p>
 <div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="../reference/get_regional_ci.html">get_regional_ci</a></span>(<span class="kw">region_id</span> <span class="kw">=</span> <span class="fl">13</span>,
@@ -307,15 +307,15 @@
 <span class="co">#&gt; # A tibble: 9 x 10</span>
 <span class="co">#&gt;   regionid dnoregion shortname postcode from                to                 </span>
 <span class="co">#&gt;      &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dttm&gt;              &lt;dttm&gt;             </span>
-<span class="co">#&gt; 1        9 UKPN East East Eng~ EN2      2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 2        9 UKPN East East Eng~ EN2      2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 3        9 UKPN East East Eng~ EN2      2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 4        9 UKPN East East Eng~ EN2      2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 5        9 UKPN East East Eng~ EN2      2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 6        9 UKPN East East Eng~ EN2      2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 7        9 UKPN East East Eng~ EN2      2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 8        9 UKPN East East Eng~ EN2      2020-10-28 21:30:00 2020-10-28 22:00:00</span>
-<span class="co">#&gt; 9        9 UKPN East East Eng~ EN2      2020-10-28 21:30:00 2020-10-28 22:00:00</span>
+<span class="co">#&gt; 1        9 UKPN East East Eng~ EN2      2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 2        9 UKPN East East Eng~ EN2      2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 3        9 UKPN East East Eng~ EN2      2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 4        9 UKPN East East Eng~ EN2      2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 5        9 UKPN East East Eng~ EN2      2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 6        9 UKPN East East Eng~ EN2      2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 7        9 UKPN East East Eng~ EN2      2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 8        9 UKPN East East Eng~ EN2      2020-11-01 21:00:00 2020-11-01 21:30:00</span>
+<span class="co">#&gt; 9        9 UKPN East East Eng~ EN2      2020-11-01 21:00:00 2020-11-01 21:30:00</span>
 <span class="co">#&gt; # ... with 4 more variables: fuel &lt;chr&gt;, perc &lt;dbl&gt;, forecast &lt;int&gt;,</span>
 <span class="co">#&gt; #   index &lt;chr&gt;</span></pre></body></html></div>
 <p>As always, we can pass <code>start</code> and <code>end</code> arguments to the function to extend the time window:</p>

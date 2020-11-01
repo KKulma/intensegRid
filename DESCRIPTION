@@ -4,7 +4,8 @@ Title: R Wrapper for the Carbon Intensity API
 Version: 0.1.0
 Author: Kasia Kulma <katarzyna.kulma@gmail.com>
 Maintainer: Kasia Kulma <katarzyna.kulma@gmail.com>
-Description: This package allows to query and access data provided by the 
+Description: Electricity is not made equal and it vary in its carbon footprint (or carbon intensity) 
+    depending on its source. This package enables to access and query data provided by the 
     Carbon Intensity API (<https://carbonintensity.org.uk/>). National Grid’s Carbon Intensity API 
     provides an indicative trend of regional carbon intensity of the electricity system in Great Britain.  
 License: CC0

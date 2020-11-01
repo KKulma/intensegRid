@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-Electricity is not made equal and it will have a smaller or greater carbon footprint (or carbon intensity) depending on its source, :
+Electricity is not made equal and it will have a smaller or greater carbon footprint (or carbon intensity) depending on its source:
 
 ```{r example}
 library(intensegRid)
