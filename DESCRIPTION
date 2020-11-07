@@ -10,7 +10,9 @@ Description: Electricity is not made equal and it vary in its carbon footprint (
     provides an indicative trend of regional carbon intensity of the electricity system in Great Britain.  
 License: CC0
 Encoding: UTF-8
-LazyData: true
+LazyData: TRUE
+URL: https://github.com/KKulma/intensegRid, https://kkulma.github.io/intensegRid/articles/intro-to-carbon-intensity.html
+BugReports: https://github.com/KKulma/intensegRid/issues
 RoxygenNote: 7.1.0
 Depends:
     R (>= 2.10)
