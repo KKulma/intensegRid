@@ -3,11 +3,6 @@
 #' @param call {character} API URL
 #'
 #' @return tibble
-#'
-#' @examples \dontrun{
-#'  url <- 'https://api.carbonintensity.org.uk/intensity/factors'
-#'  data <- get_data(url)
-#'  }
 get_data <- function(call) {
 
   response <- httr::GET(call)
