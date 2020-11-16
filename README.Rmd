@@ -17,16 +17,23 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The **intensegRid** package is an API wrapper for [National Grid's Carbon Intensity API](https://carbonintensity.org.uk/). The API provides information on national and regional carbon intensity - the amount of carbon emitted per unit of energy consumed - for the UK.
+This package is an API wrapper for [National Grid's Carbon Intensity API](https://carbonintensity.org.uk/). The API provides information on national and regional carbon intensity - the amount of carbon emitted per unit of energy consumed - for the UK. 
 
 ## Installation
 
-You can install the development version from [GitHub](https://github.com/) with:
+Install the latest CRAN package with: 
 
-``` r
+```{r eval=FALSE}
+install.packages("intensegRid")
+```
+
+Or you can install the development version from [GitHub](https://github.com/) with:
+
+```{r eval=FALSE}
 # install.packages("remotes")
 remotes::install_github("KKulma/intensegRid")
 ```
+
 ## Examples
 
 For examples on how to use **intensegRid** package refer to the [vignette](https://kkulma.github.io/intensegRid/articles/intro-to-carbon-intensity.html). 

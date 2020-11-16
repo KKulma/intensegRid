@@ -7,14 +7,20 @@
 
 <!-- badges: end -->
 
-The **intensegRid** package is an API wrapper for [National Grid’s
-Carbon Intensity API](https://carbonintensity.org.uk/). The API provides
-information on national and regional carbon intensity - the amount of
-carbon emitted per unit of energy consumed - for the UK.
+This package is an API wrapper for [National Grid’s Carbon Intensity
+API](https://carbonintensity.org.uk/). The API provides information on
+national and regional carbon intensity - the amount of carbon emitted
+per unit of energy consumed - for the UK.
 
 ## Installation
 
-You can install the development version from
+Install the latest CRAN package with:
+
+``` r
+install.packages("intensegRid")
+```
+
+Or you can install the development version from
 [GitHub](https://github.com/) with:
 
 ``` r

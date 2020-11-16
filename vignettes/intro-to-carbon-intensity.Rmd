@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-Electricity is not made equal and it will have a smaller or greater carbon footprint, (or carbon intensity), depending on its source, :
+Electricity is not made equal and it will have a smaller or greater carbon footprint (or carbon intensity) depending on its source:
 
 ```{r example}
 library(intensegRid)
@@ -66,7 +66,7 @@ get_stats(start, end, block = 2)
 
 ### Carbon intensity per UK country
 
-**intensegRid** package allows you to access carbon intensity data per UK country, i.e. England, Scotland and Wales (Northern Ireland is not included) with `get_national_ci()`:
+This package allows you to access carbon intensity data per UK country, i.e. England, Scotland and Wales (Northern Ireland is not included) with `get_national_ci()`:
 ```{r national1}
 # Current carbon intensity per UK country
 get_national_ci()

@@ -1,5 +1,6 @@
 
 
+
 #' Get Carbon Intensity factors for each fuel type
 #'
 #' @return a tibble
@@ -34,17 +35,21 @@ get_factors <- function() {
 get_stats <- function(start, end, block = NULL) {
   url <- "https://api.carbonintensity.org.uk/intensity/stats/"
   
-  if(as.numeric(as.Date(end) - as.Date(start)) > 30) {
-    stop(paste0("The start & end date range should not exceed 30 days. Currently it is ",
-                as.numeric(as.Date(end) - as.Date(start)),
-                " days"))
+  if (as.numeric(as.Date(end) - as.Date(start)) > 30) {
+    stop(
+      paste0(
+        "The start & end date range should not exceed 30 days. Currently it is ",
+        as.numeric(as.Date(end) - as.Date(start)),
+        " days"
+      )
+    )
   }
   
-  if(!is.null(block) && block > 24) {
+  if (!is.null(block) && block > 24) {
     stop("Block value should not exceed 24")
   }
   
-  if(!is.null(block) && block < 1) {
+  if (!is.null(block) && block < 1) {
     stop("Block value should not be lower than 1")
   }
   

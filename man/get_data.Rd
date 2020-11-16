@@ -15,9 +15,3 @@ tibble
 \description{
 Retrieve raw data from Carbon Intensity API
 }
-\examples{
-\dontrun{
- url <- 'https://api.carbonintensity.org.uk/intensity/factors'
- data <- get_data(url)
- }
-}
