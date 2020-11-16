@@ -14,7 +14,13 @@ per unit of energy consumed - for the UK.
 
 ## Installation
 
-You can install the development version from
+Install the latest CRAN package with:
+
+``` r
+install.packages("intensegRid")
+```
+
+Or you can install the development version from
 [GitHub](https://github.com/) with:
 
 ``` r

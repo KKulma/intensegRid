@@ -21,12 +21,19 @@ This package is an API wrapper for [National Grid's Carbon Intensity API](https:
 
 ## Installation
 
-You can install the development version from [GitHub](https://github.com/) with:
+Install the latest CRAN package with: 
 
-``` r
+```{r eval=FALSE}
+install.packages("intensegRid")
+```
+
+Or you can install the development version from [GitHub](https://github.com/) with:
+
+```{r eval=FALSE}
 # install.packages("remotes")
 remotes::install_github("KKulma/intensegRid")
 ```
+
 ## Examples
 
 For examples on how to use **intensegRid** package refer to the [vignette](https://kkulma.github.io/intensegRid/articles/intro-to-carbon-intensity.html). 
