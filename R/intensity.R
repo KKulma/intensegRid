@@ -89,20 +89,25 @@ get_national_ci <-
       unnest_var <- "data"
     }
     
-    result <- data %>%
-      tidyr::unnest(unnest_var) %>%
-      tidyr::unnest(.data$generationmix) %>%
-      dplyr::mutate(to = lubridate::ymd_hm(.data$to),
-                    from = lubridate::ymd_hm(.data$from)) %>%
-      tibble::as_tibble()
+    # handle empty but valid result
     
-    clean_names <- gsub('intensity.', '', colnames(result))
-    colnames(result) <- clean_names
+    if (is.list(data) && length(data) == 0) {
+      result <- NULL
+    } else {
+      result <- data %>%
+        tidyr::unnest(unnest_var) %>%
+        tidyr::unnest(.data$generationmix) %>%
+        dplyr::mutate(to = lubridate::ymd_hm(.data$to),
+                      from = lubridate::ymd_hm(.data$from)) %>%
+        tibble::as_tibble()
+      
+      clean_names <- gsub('intensity.', '', colnames(result))
+      colnames(result) <- clean_names
+    }
     
     result
     
   }
-
 
 
 #' Get Carbon Intensity for specified postcode.
@@ -161,7 +166,6 @@ get_postcode_ci <- function(postcode,
   colnames(result) <- clean_names
   
   result
-  
 }
 
 
