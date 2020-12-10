@@ -5,6 +5,7 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/KKulma/intensegRid/workflows/R-CMD-check/badge.svg)](https://github.com/KKulma/intensegRid/actions)
 <!-- badges: end -->
 
 This package is an API wrapper for [National Grid’s Carbon Intensity
