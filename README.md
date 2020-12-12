@@ -8,6 +8,8 @@
 [![R-CMD-check](https://github.com/KKulma/intensegRid/workflows/R-CMD-check/badge.svg)](https://github.com/KKulma/intensegRid/actions)
 <!-- badges: end -->
 
+# intensegRid <img src='man/figures/logo.png' align="right" height="200" /></a>
+
 This package is an API wrapper for [National Grid’s Carbon Intensity
 API](https://carbonintensity.org.uk/). The API provides information on
 national and regional carbon intensity - the amount of carbon emitted

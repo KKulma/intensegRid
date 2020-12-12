@@ -13,7 +13,7 @@ Encoding: UTF-8
 LazyData: TRUE
 URL: https://github.com/KKulma/intensegRid, https://kkulma.github.io/intensegRid/articles/intro-to-carbon-intensity.html
 BugReports: https://github.com/KKulma/intensegRid/issues
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Depends:
     R (>= 2.10)
 Imports: 
@@ -27,6 +27,7 @@ Imports:
     rlang,
     purrr
 Suggests: 
+    utils,
     knitr,
     rmarkdown,
     testthat (>= 2.1.0)
