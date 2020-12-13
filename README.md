@@ -6,6 +6,10 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/KKulma/intensegRid/workflows/R-CMD-check/badge.svg)](https://github.com/KKulma/intensegRid/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/KKulma/intensegRid/branch/master/graph/badge.svg)](https://codecov.io/gh/KKulma/intensegRid?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/intensegRid)](https://CRAN.R-project.org/package=intensegRid)
 <!-- badges: end -->
 
 # intensegRid <img src='man/figures/logo.png' align="right" height="200" /></a>
