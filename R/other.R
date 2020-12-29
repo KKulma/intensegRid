@@ -1,6 +1,3 @@
-
-
-
 #' Get Carbon Intensity factors for each fuel type
 #'
 #' @return a tibble
@@ -64,12 +61,16 @@ get_stats <- function(start, end, block = NULL) {
   
   data <- get_data(call)
   
-  result <- data %>%
-    dplyr::mutate(from = lubridate::ymd_hm(.data$from),
-                  to = lubridate::ymd_hm(.data$to)) %>%
-    tibble::as_tibble()
-  
-  result <- clean_colnames(result)
+  if (is.list(data) && length(data) == 0) {
+    result <- NULL
+  } else {
+    result <- data %>%
+      dplyr::mutate(from = lubridate::ymd_hm(.data$from),
+                    to = lubridate::ymd_hm(.data$to)) %>%
+      tibble::as_tibble()
+    
+    result <- clean_colnames(result)
+  }
   
   result
 }

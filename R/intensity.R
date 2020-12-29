@@ -166,11 +166,8 @@ get_postcode_ci <- function(postcode,
                     .data$shortname,
                     .data$postcode,
                     dplyr::everything())
-    clean_names <- gsub('intensity.', '', colnames(result))
-    colnames(result) <- clean_names
+    result <- clean_colnames(result)
   }
-  
-  result <- clean_colnames(result)
   
   result
 }
@@ -209,14 +206,16 @@ get_regional_ci <- function(region_id,
   }
   
   data <- get_data(call)
-  
-  if (all(is.null(c(start, end))))
+  if (is.list(data) && length(data) == 0) {
+    result <- NULL
+  } else if (all(is.null(c(start, end)))) {
     result <- data %>%
-    tidyr::unnest(data) %>%
-    tidyr::unnest(.data$generationmix) %>%
-    dplyr::mutate(to = lubridate::ymd_hm(.data$to),
-                  from = lubridate::ymd_hm(.data$from))
-  else {
+      tidyr::unnest(data) %>%
+      tidyr::unnest(.data$generationmix) %>%
+      dplyr::mutate(to = lubridate::ymd_hm(.data$to),
+                    from = lubridate::ymd_hm(.data$from))
+    result <- clean_colnames(result)
+  } else {
     result <- data$data %>%
       tidyr::unnest(.data$generationmix) %>%
       dplyr::mutate(
@@ -230,11 +229,9 @@ get_regional_ci <- function(region_id,
                     .data$shortname,
                     .data$region_id,
                     dplyr::everything())
+    result <- clean_colnames(result)
   }
   
-  result <- clean_colnames(result)
-  
   result
-  
   
 }
