@@ -69,9 +69,7 @@ get_stats <- function(start, end, block = NULL) {
                   to = lubridate::ymd_hm(.data$to)) %>%
     tibble::as_tibble()
   
-  
-  clean_names <- gsub('intensity.', '', colnames(result))
-  colnames(result) <- clean_names
+  result <- clean_colnames(result)
   
   result
 }

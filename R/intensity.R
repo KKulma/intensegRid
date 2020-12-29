@@ -29,13 +29,16 @@ get_british_ci <-
     
     data <- get_data(call)
     
-    result <- data %>%
-      dplyr::mutate(from = lubridate::ymd_hm(.data$from),
-                    to = lubridate::ymd_hm(.data$to)) %>%
-      tibble::as_tibble()
-    
-    clean_names <- gsub('intensity.', '', colnames(result))
-    colnames(result) <- clean_names
+    if (is.list(data) && length(data) == 0) {
+      result <- NULL
+    } else {
+      result <- data %>%
+        dplyr::mutate(from = lubridate::ymd_hm(.data$from),
+                      to = lubridate::ymd_hm(.data$to)) %>%
+        tibble::as_tibble()
+      
+      result <- clean_colnames(result)
+    }
     
     result
   }
@@ -101,8 +104,7 @@ get_national_ci <-
                       from = lubridate::ymd_hm(.data$from)) %>%
         tibble::as_tibble()
       
-      clean_names <- gsub('intensity.', '', colnames(result))
-      colnames(result) <- clean_names
+      result <- clean_colnames(result)
     }
     
     result
@@ -140,12 +142,16 @@ get_postcode_ci <- function(postcode,
   
   data <- get_data(call)
   
-  if (all(is.null(c(start, end)))) {
+  if (is.list(data) && length(data) == 0) {
+    result <- NULL
+  } else if (all(is.null(c(start, end)))) {
     result <- data %>%
       tidyr::unnest(.data$data) %>%
       tidyr::unnest(.data$generationmix) %>%
       dplyr::mutate(from = lubridate::ymd_hm(.data$from),
                     to = lubridate::ymd_hm(.data$to))
+    result <- clean_colnames(result)
+    
   } else {
     result <- data$data %>%
       tidyr::unnest(.data$generationmix) %>%
@@ -160,10 +166,11 @@ get_postcode_ci <- function(postcode,
                     .data$shortname,
                     .data$postcode,
                     dplyr::everything())
+    clean_names <- gsub('intensity.', '', colnames(result))
+    colnames(result) <- clean_names
   }
   
-  clean_names <- gsub('intensity.', '', colnames(result))
-  colnames(result) <- clean_names
+  result <- clean_colnames(result)
   
   result
 }
@@ -225,8 +232,7 @@ get_regional_ci <- function(region_id,
                     dplyr::everything())
   }
   
-  clean_names <- gsub('intensity.', '', colnames(result))
-  colnames(result) <- clean_names
+  result <- clean_colnames(result)
   
   result
   

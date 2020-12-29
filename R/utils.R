@@ -22,3 +22,15 @@ get_data <- function(call) {
   
   data
 }
+
+#' Tidy up intensity results column names
+#'
+#' @param result a data frame with raw results from Carbon Intensity API 
+#'
+#' @return data frame
+#'
+clean_colnames <- function(result) {
+  clean_names <- gsub('intensity.', '', colnames(result))
+  colnames(result) <- clean_names
+  result
+}
