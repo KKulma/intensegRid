@@ -63,9 +63,9 @@ get_british_ci <-
 #' get_national_ci(start = '2019-01-01', end = '2019-01-02')
 #' }
 get_national_ci <-
-  function(region = NULL,
-           start = NULL,
-           end = NULL) {
+  function(start = NULL,
+           end = NULL,
+           region = NULL) {
     if (!is.null(region) &&
         !region %in%  c('England', 'Scotland', 'Wales')) {
       stop("Region has to be either NULL or it must equate to one of 'England', 'Scotland', 'Wales'")
