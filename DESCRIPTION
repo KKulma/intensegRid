@@ -1,7 +1,7 @@
 Package: intensegRid
 Type: Package
 Title: R Wrapper for the Carbon Intensity API
-Version: 0.1.0
+Version: 0.1.1
 Author: Kasia Kulma <katarzyna.kulma@gmail.com>
 Maintainer: Kasia Kulma <katarzyna.kulma@gmail.com>
 Description: Electricity is not made equal and it vary in its carbon footprint (or carbon intensity) 
