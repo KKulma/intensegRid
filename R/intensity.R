@@ -29,13 +29,16 @@ get_british_ci <-
     
     data <- get_data(call)
     
-    result <- data %>%
-      dplyr::mutate(from = lubridate::ymd_hm(.data$from),
-                    to = lubridate::ymd_hm(.data$to)) %>%
-      tibble::as_tibble()
-    
-    clean_names <- gsub('intensity.', '', colnames(result))
-    colnames(result) <- clean_names
+    if (is.list(data) && length(data) == 0) {
+      result <- NULL
+    } else {
+      result <- data %>%
+        dplyr::mutate(from = lubridate::ymd_hm(.data$from),
+                      to = lubridate::ymd_hm(.data$to)) %>%
+        tibble::as_tibble()
+      
+      result <- clean_colnames(result)
+    }
     
     result
   }
@@ -60,9 +63,9 @@ get_british_ci <-
 #' get_national_ci(start = '2019-01-01', end = '2019-01-02')
 #' }
 get_national_ci <-
-  function(region = NULL,
-           start = NULL,
-           end = NULL) {
+  function(start = NULL,
+           end = NULL,
+           region = NULL) {
     if (!is.null(region) &&
         !region %in%  c('England', 'Scotland', 'Wales')) {
       stop("Region has to be either NULL or it must equate to one of 'England', 'Scotland', 'Wales'")
@@ -76,8 +79,8 @@ get_national_ci <-
     } else if (all(is.null(c(start, end)))) {
       call <- paste0(url, tolower(region), '/')
     } else if (all(!is.null(c(start, end)))) {
-      from_date <- paste0(as.Date(start), 'T00:00Z/')
-      to_date <- paste0(as.Date(end), 'T23:59Z')
+      from_date <- paste0(lubridate::ymd(as.character(start)), 'T00:00Z/')
+      to_date <- paste0(lubridate::ymd(as.character(end)), 'T23:59Z')
       call <- paste0(url, 'intensity/', from_date, to_date)
     }
     
@@ -101,8 +104,7 @@ get_national_ci <-
                       from = lubridate::ymd_hm(.data$from)) %>%
         tibble::as_tibble()
       
-      clean_names <- gsub('intensity.', '', colnames(result))
-      colnames(result) <- clean_names
+      result <- clean_colnames(result)
     }
     
     result
@@ -140,12 +142,16 @@ get_postcode_ci <- function(postcode,
   
   data <- get_data(call)
   
-  if (all(is.null(c(start, end)))) {
+  if (is.list(data) && length(data) == 0) {
+    result <- NULL
+  } else if (all(is.null(c(start, end)))) {
     result <- data %>%
       tidyr::unnest(.data$data) %>%
       tidyr::unnest(.data$generationmix) %>%
       dplyr::mutate(from = lubridate::ymd_hm(.data$from),
                     to = lubridate::ymd_hm(.data$to))
+    result <- clean_colnames(result)
+    
   } else {
     result <- data$data %>%
       tidyr::unnest(.data$generationmix) %>%
@@ -160,10 +166,8 @@ get_postcode_ci <- function(postcode,
                     .data$shortname,
                     .data$postcode,
                     dplyr::everything())
+    result <- clean_colnames(result)
   }
-  
-  clean_names <- gsub('intensity.', '', colnames(result))
-  colnames(result) <- clean_names
   
   result
 }
@@ -202,14 +206,16 @@ get_regional_ci <- function(region_id,
   }
   
   data <- get_data(call)
-  
-  if (all(is.null(c(start, end))))
+  if (is.list(data) && length(data) == 0) {
+    result <- NULL
+  } else if (all(is.null(c(start, end)))) {
     result <- data %>%
-    tidyr::unnest(data) %>%
-    tidyr::unnest(.data$generationmix) %>%
-    dplyr::mutate(to = lubridate::ymd_hm(.data$to),
-                  from = lubridate::ymd_hm(.data$from))
-  else {
+      tidyr::unnest(data) %>%
+      tidyr::unnest(.data$generationmix) %>%
+      dplyr::mutate(to = lubridate::ymd_hm(.data$to),
+                    from = lubridate::ymd_hm(.data$from))
+    result <- clean_colnames(result)
+  } else {
     result <- data$data %>%
       tidyr::unnest(.data$generationmix) %>%
       dplyr::mutate(
@@ -223,12 +229,9 @@ get_regional_ci <- function(region_id,
                     .data$shortname,
                     .data$region_id,
                     dplyr::everything())
+    result <- clean_colnames(result)
   }
   
-  clean_names <- gsub('intensity.', '', colnames(result))
-  colnames(result) <- clean_names
-  
   result
-  
   
 }

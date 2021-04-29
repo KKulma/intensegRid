@@ -21,9 +21,9 @@ test_that("get_british_ci() works", {
 test_that("get_national_ci() works", {
   
   nat_no_dates <- get_national_ci()
-  nat_en <- get_national_ci('England')
-  nat_sct <- get_national_ci('Scotland')
-  nat_wal <- get_national_ci('Wales')
+  nat_en <- get_national_ci(region = 'England')
+  nat_sct <- get_national_ci(region = 'Scotland')
+  nat_wal <- get_national_ci(region = 'Wales')
   nat_with_dates <- get_national_ci(start = start, end = end)
   
   testset <- list(nat_no_dates,
@@ -37,8 +37,8 @@ test_that("get_national_ci() works", {
   purrr::map(testset, ~expect_gte(nrow(.x), 9))
   
   expect_error(get_national_ci(start = start, end = '2019-12-31'))
-  expect_error(get_national_ci("Wales", start = start, end = '2019-12-31'))
-  expect_error(get_national_ci("Wales", start = start))
+  expect_error(get_national_ci(region = "Wales", start = start, end = '2019-12-31'))
+  expect_error(get_national_ci(region = "Wales", start = start))
   
 })
 

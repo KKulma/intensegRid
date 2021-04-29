@@ -25,7 +25,9 @@ get_mix <- function(start = NULL, end = NULL) {
   
   data <- get_data(call)
   
-  if (all(!is.null(c(start, end)))) {
+  if (is.list(data) && length(data) == 0) {
+    result <- NULL
+  } else if (all(!is.null(c(start, end)))) {
     result <- data %>%
       tidyr::unnest(.data$generationmix) %>%
       dplyr::mutate(from = lubridate::ymd_hm(.data$from),
