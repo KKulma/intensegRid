@@ -79,8 +79,8 @@ get_national_ci <-
     } else if (all(is.null(c(start, end)))) {
       call <- paste0(url, tolower(region), '/')
     } else if (all(!is.null(c(start, end)))) {
-      from_date <- paste0(as.Date(start), 'T00:00Z/')
-      to_date <- paste0(as.Date(end), 'T23:59Z')
+      from_date <- paste0(lubridate::ymd(as.character(start)), 'T00:00Z/')
+      to_date <- paste0(lubridate::ymd(as.character(end)), 'T23:59Z')
       call <- paste0(url, 'intensity/', from_date, to_date)
     }
     
