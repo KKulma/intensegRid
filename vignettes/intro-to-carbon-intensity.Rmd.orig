@@ -7,69 +7,59 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 Electricity is not made equal and it will have a smaller or greater carbon footprint (or carbon intensity) depending on its source:
 
-
-```r
+```{r example}
 library(intensegRid)
-#> Error in library(intensegRid): there is no package called 'intensegRid'
 
 # carbon intensity per electricity source
 get_factors()
-#> Error in get_factors(): could not find function "get_factors"
 ```
 
 ### Carbon intensity for the whole UK
 Current carbon intensity
-
-```r
+```{r british1}
 ## carbon intensity for the whole Britain for the current 1/2 hr period
 get_british_ci()
-#> Error in get_british_ci(): could not find function "get_british_ci"
 ```
 
 Current carbon intensity for specified dates 
-
-```r
+```{r british2}
 ## function arguments
 start <- "2019-04-01"
 end <- "2019-04-07"
 
 get_british_ci(start, end)
-#> Error in get_british_ci(start, end): could not find function "get_british_ci"
 ```
 
 If you want to understand the exact composition of the UK-wide electricity over time, you can use `get_mix()` function:
 
-
-```r
+```{r mix1}
 # electricity composition in the current 30 mins
 get_mix()
-#> Error in get_mix(): could not find function "get_mix"
 ```
 
-
-```r
+```{r mix2}
 # electricity composition for the specified dates
 get_mix(start, end)
-#> Error in get_mix(start, end): could not find function "get_mix"
 ```
 
 Finally, you can access summarised carbon intensity statistics for the specified dates: 
 
-
-```r
+```{r stats}
 get_stats(start, end)
-#> Error in get_stats(start, end): could not find function "get_stats"
 ```
 
 Additionally, you can add a `block` argument that will group the statistics by specified-length blocks, for example a block length of 2 (hrs over a 24 hr period) will return 12 items with the average, max, min for each 2 hr block.  
-
-```r
+```{r stats2}
 get_stats(start, end, block = 2)
-#> Error in get_stats(start, end, block = 2): could not find function "get_stats"
 ```
 
 
@@ -77,67 +67,51 @@ get_stats(start, end, block = 2)
 ### Carbon intensity per UK country
 
 This package allows you to access carbon intensity data per UK country, i.e. England, Scotland and Wales (Northern Ireland is not included) with `get_national_ci()`:
-
-```r
+```{r national1}
 # Current carbon intensity per UK country
 get_national_ci()
-#> Error in get_national_ci(): could not find function "get_national_ci"
 ```
 
-
-```r
+```{r national2}
 # Current carbon intensity for England 
 # Function also accepts region values: "Scotland" and "Wales"
 get_national_ci(region = "England")
-#> Error in get_national_ci(region = "England"): could not find function "get_national_ci"
 ```
 
-
-```r
+```{r national3}
 # Carbon intensity for all the UK countries for specified dates 
 get_national_ci(start = start, end = end)
-#> Error in get_national_ci(start = start, end = end): could not find function "get_national_ci"
 ```
 
 ### Carbon intensity in UK regions
 The API allows you extract information for UK regions using `get_regional_ci()` function, that accepts `region_id` as a required argument. You can access a handy `region_id` lookup table as a package dataset:
-
-```r
+```{r regions_lookup}
 regions_lookup
-#> Error in eval(expr, envir, enclos): object 'regions_lookup' not found
 ```
 
 For example, let's access the current carbon intensity for London: 
-
-```r
+```{r region1}
 get_regional_ci(region_id = 13)
-#> Error in get_regional_ci(region_id = 13): could not find function "get_regional_ci"
 ```
 
 Similarly to other functions in the package, `get_regional_ci()` also accepts `start` and `end` arguments:
-
-```r
+```{r region2}
 get_regional_ci(region_id = 13, 
                 start, 
                 end)
-#> Error in get_regional_ci(region_id = 13, start, end): could not find function "get_regional_ci"
 ```
 
 
 ### Carbon intensity per postcode
 
 Finally, the API allows you to access carbon intensity data per postcode. However, it only accepts outward postcode, i.e. one or two letters, followed by one or two digits. For example, the following code will access the carbon intensity information for EN2 area for the current 1/2 hr: 
-
-```r
+```{r postcode1}
 get_postcode_ci(postcode = "EN2")
-#> Error in get_postcode_ci(postcode = "EN2"): could not find function "get_postcode_ci"
 ```
 
 As always, we can pass `start` and `end` arguments to the function to extend the time window: 
-
-```r
+```{r postcode2}
 get_postcode_ci(postcode = 'EN2',
                 start,
                 end)
-#> Error in get_postcode_ci(postcode = "EN2", start, end): could not find function "get_postcode_ci"
 ```
