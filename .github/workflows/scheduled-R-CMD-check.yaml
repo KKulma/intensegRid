@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-name: R-CMD-check
+name: scheduled-R-CMD-check
 
 jobs:
   R-CMD-check:
