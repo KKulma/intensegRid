@@ -1,0 +1,38 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.carbonintensity.org.uk/intensity/factors
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      content-type: application/json
+      content-length: '339'
+      date: Fri, 30 Apr 2021 22:49:09 GMT
+      x-amzn-requestid: a5c09fb8-8282-4a50-9779-94fa97abb54b
+      access-control-allow-origin: '*'
+      x-amz-apigw-id: enpnnHVNLPEFfCQ=
+      x-amzn-trace-id: Root=1-608c8963-04d24d655b2f91923f9d9d3d;Sampled=0
+      x-cache: Miss from cloudfront
+      via: 1.1 7d4502925a4a466598af9dc0cff9e995.cloudfront.net (CloudFront)
+      x-amz-cf-pop: LHR62-C5
+      x-amz-cf-id: 1gnKjAXp7Y6Q11IhCGvhQZj_tgzSRepCDN4sl7Ru06rmBcZ15YTjoA==
+    body:
+      encoding: UTF-8
+      file: no
+      string: "{ \r\n  \"data\":[{ \r\n    \"Biomass\": 120,\r\n    \"Coal\": 937,\r\n
+        \   \"Dutch Imports\": 474,\r\n    \"French Imports\": 53,\r\n    \"Gas (Combined
+        Cycle)\": 394,\r\n    \"Gas (Open Cycle)\": 651,\r\n    \"Hydro\": 0,\r\n
+        \   \"Irish Imports\": 458,\r\n    \"Nuclear\": 0,\r\n    \"Oil\": 935,\r\n
+        \   \"Other\": 300,\r\n    \"Pumped Storage\": 0,\r\n    \"Solar\": 0,\r\n
+        \   \"Wind\": 0\r\n  }]\r\n}"
+  recorded_at: 2021-04-30 22:49:10 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0

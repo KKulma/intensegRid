@@ -1,0 +1,33 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.carbonintensity.org.uk/regional/scotland/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      content-type: application/json
+      content-length: '454'
+      date: Fri, 30 Apr 2021 23:01:58 GMT
+      x-amzn-requestid: bfd7cf0f-4be0-4731-9d07-8fa743d883c2
+      access-control-allow-origin: '*'
+      x-amz-apigw-id: enrgEEeVLPEFTwQ=
+      x-amzn-trace-id: Root=1-608c8c66-02de456113c948185feb429c;Sampled=0
+      x-cache: Miss from cloudfront
+      via: 1.1 89033043c124289b2dedc4a7c50bd2e1.cloudfront.net (CloudFront)
+      x-amz-cf-pop: LHR3-C1
+      x-amz-cf-id: 4jriyTlfhxJMjQh_Nc79PuCd2pqSWCvX615ccitt9YY1w-mQ81MQQQ==
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"data":[{"regionid":16,"dnoregion":"Scotland","shortname":"Scotland","data":[{"from":"2021-04-30T22:30Z","to":"2021-04-30T23:00Z","intensity":{"forecast":230,"index":"moderate"},"generationmix":[{"fuel":"biomass","perc":3.8},{"fuel":"coal","perc":0.1},{"fuel":"imports","perc":1.5},{"fuel":"gas","perc":56.7},{"fuel":"nuclear","perc":17.9},{"fuel":"other","perc":0},{"fuel":"hydro","perc":8.3},{"fuel":"solar","perc":0},{"fuel":"wind","perc":11.6}]}]}]}'
+  recorded_at: 2021-04-30 23:01:58 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0

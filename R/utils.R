@@ -11,7 +11,7 @@ get_data <- function(call) {
   }
   
   if (response$status_code != 200) {
-    stop(paste0("ERROR: The status call is ", response$status_code))
+    stop(paste0("ERROR: API request failed; status call is ", response$status_code))
   }
   
   response_content <-

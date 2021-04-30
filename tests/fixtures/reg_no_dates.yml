@@ -1,0 +1,33 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.carbonintensity.org.uk/regional/regionid/13
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      content-type: application/json
+      content-length: '450'
+      date: Fri, 30 Apr 2021 23:02:01 GMT
+      x-amzn-requestid: 03ff445e-d782-4766-8e1d-bd6936b64e5b
+      access-control-allow-origin: '*'
+      x-amz-apigw-id: enrggHWqrPEFuew=
+      x-amzn-trace-id: Root=1-608c8c69-50a31989302e05a649808c88;Sampled=0
+      x-cache: Miss from cloudfront
+      via: 1.1 89033043c124289b2dedc4a7c50bd2e1.cloudfront.net (CloudFront)
+      x-amz-cf-pop: LHR3-C1
+      x-amz-cf-id: zD9fh5oEO7f8UguRQcY0n0dJ08QRG4Nz0dCXSpIMm3aCTyT-ida99w==
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"data":[{"regionid":13,"dnoregion":"UKPN London","shortname":"London","data":[{"from":"2021-04-30T22:30Z","to":"2021-04-30T23:00Z","intensity":{"forecast":210,"index":"moderate"},"generationmix":[{"fuel":"biomass","perc":0},{"fuel":"coal","perc":0},{"fuel":"imports","perc":55.9},{"fuel":"gas","perc":42.3},{"fuel":"nuclear","perc":0.3},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0.8},{"fuel":"solar","perc":0},{"fuel":"wind","perc":0.6}]}]}]}'
+  recorded_at: 2021-04-30 23:02:01 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0
