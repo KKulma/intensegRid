@@ -1,0 +1,285 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.carbonintensity.org.uk/intensity/stats/2019-04-01T00:00Z/2019-04-07T23:59Z/2
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      content-type: application/json
+      content-length: '16170'
+      date: Fri, 30 Apr 2021 22:49:14 GMT
+      x-amzn-requestid: fb4726c0-ace9-4e92-a2cd-45bbf0180ad3
+      access-control-allow-origin: '*'
+      x-amz-apigw-id: enpoZE7irPEFVzg=
+      x-amzn-trace-id: Root=1-608c8968-23b9239150c8a55940a59b99;Sampled=0
+      x-cache: Miss from cloudfront
+      via: 1.1 7d4502925a4a466598af9dc0cff9e995.cloudfront.net (CloudFront)
+      x-amz-cf-pop: LHR62-C5
+      x-amz-cf-id: 1D_EGIIlfAaU307K2FlwWAdSdTvtusKmPYEYWxwq6RX5jsPZyAGjaw==
+    body:
+      encoding: UTF-8
+      file: no
+      string: "{ \r\n  \"data\":[{ \r\n    \"from\": \"2019-04-01T00:00Z\",\r\n    \"to\":
+        \"2019-04-01T02:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 171,\r\n
+        \     \"average\": 167,\r\n      \"min\": 161,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-01T02:00Z\",\r\n    \"to\":
+        \"2019-04-01T04:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 169,\r\n
+        \     \"average\": 166,\r\n      \"min\": 162,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-01T04:00Z\",\r\n    \"to\":
+        \"2019-04-01T06:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 230,\r\n
+        \     \"average\": 207,\r\n      \"min\": 183,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-01T06:00Z\",\r\n    \"to\":
+        \"2019-04-01T08:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 240,\r\n
+        \     \"average\": 237,\r\n      \"min\": 232,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-01T08:00Z\",\r\n    \"to\":
+        \"2019-04-01T10:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 226,\r\n
+        \     \"average\": 213,\r\n      \"min\": 201,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-01T10:00Z\",\r\n    \"to\":
+        \"2019-04-01T12:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 196,\r\n
+        \     \"average\": 192,\r\n      \"min\": 187,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-01T12:00Z\",\r\n    \"to\":
+        \"2019-04-01T14:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 205,\r\n
+        \     \"average\": 196,\r\n      \"min\": 188,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-01T14:00Z\",\r\n    \"to\":
+        \"2019-04-01T16:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 241,\r\n
+        \     \"average\": 225,\r\n      \"min\": 209,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-01T16:00Z\",\r\n    \"to\":
+        \"2019-04-01T18:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 269,\r\n
+        \     \"average\": 259,\r\n      \"min\": 250,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-01T18:00Z\",\r\n    \"to\":
+        \"2019-04-01T20:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 279,\r\n
+        \     \"average\": 275,\r\n      \"min\": 271,\r\n      \"index\": \"high\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-01T20:00Z\",\r\n    \"to\":
+        \"2019-04-01T22:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 273,\r\n
+        \     \"average\": 248,\r\n      \"min\": 229,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-01T22:00Z\",\r\n    \"to\":
+        \"2019-04-02T00:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 230,\r\n
+        \     \"average\": 223,\r\n      \"min\": 218,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T00:00Z\",\r\n    \"to\":
+        \"2019-04-02T02:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 254,\r\n
+        \     \"average\": 244,\r\n      \"min\": 239,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T02:00Z\",\r\n    \"to\":
+        \"2019-04-02T04:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 258,\r\n
+        \     \"average\": 256,\r\n      \"min\": 254,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T04:00Z\",\r\n    \"to\":
+        \"2019-04-02T06:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 286,\r\n
+        \     \"average\": 275,\r\n      \"min\": 262,\r\n      \"index\": \"high\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T06:00Z\",\r\n    \"to\":
+        \"2019-04-02T08:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 288,\r\n
+        \     \"average\": 283,\r\n      \"min\": 278,\r\n      \"index\": \"high\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T08:00Z\",\r\n    \"to\":
+        \"2019-04-02T10:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 270,\r\n
+        \     \"average\": 267,\r\n      \"min\": 262,\r\n      \"index\": \"high\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T10:00Z\",\r\n    \"to\":
+        \"2019-04-02T12:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 262,\r\n
+        \     \"average\": 261,\r\n      \"min\": 259,\r\n      \"index\": \"high\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T12:00Z\",\r\n    \"to\":
+        \"2019-04-02T14:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 254,\r\n
+        \     \"average\": 249,\r\n      \"min\": 243,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T14:00Z\",\r\n    \"to\":
+        \"2019-04-02T16:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 276,\r\n
+        \     \"average\": 259,\r\n      \"min\": 244,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T16:00Z\",\r\n    \"to\":
+        \"2019-04-02T18:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 288,\r\n
+        \     \"average\": 286,\r\n      \"min\": 284,\r\n      \"index\": \"high\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T18:00Z\",\r\n    \"to\":
+        \"2019-04-02T20:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 294,\r\n
+        \     \"average\": 292,\r\n      \"min\": 290,\r\n      \"index\": \"high\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T20:00Z\",\r\n    \"to\":
+        \"2019-04-02T22:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 281,\r\n
+        \     \"average\": 254,\r\n      \"min\": 229,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-02T22:00Z\",\r\n    \"to\":
+        \"2019-04-03T00:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 215,\r\n
+        \     \"average\": 203,\r\n      \"min\": 196,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T00:00Z\",\r\n    \"to\":
+        \"2019-04-03T02:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 202,\r\n
+        \     \"average\": 199,\r\n      \"min\": 195,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T02:00Z\",\r\n    \"to\":
+        \"2019-04-03T04:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 209,\r\n
+        \     \"average\": 205,\r\n      \"min\": 202,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T04:00Z\",\r\n    \"to\":
+        \"2019-04-03T06:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 248,\r\n
+        \     \"average\": 232,\r\n      \"min\": 217,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T06:00Z\",\r\n    \"to\":
+        \"2019-04-03T08:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 255,\r\n
+        \     \"average\": 245,\r\n      \"min\": 233,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T08:00Z\",\r\n    \"to\":
+        \"2019-04-03T10:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 235,\r\n
+        \     \"average\": 232,\r\n      \"min\": 230,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T10:00Z\",\r\n    \"to\":
+        \"2019-04-03T12:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 244,\r\n
+        \     \"average\": 240,\r\n      \"min\": 237,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T12:00Z\",\r\n    \"to\":
+        \"2019-04-03T14:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 249,\r\n
+        \     \"average\": 247,\r\n      \"min\": 244,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T14:00Z\",\r\n    \"to\":
+        \"2019-04-03T16:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 271,\r\n
+        \     \"average\": 265,\r\n      \"min\": 255,\r\n      \"index\": \"high\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T16:00Z\",\r\n    \"to\":
+        \"2019-04-03T18:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 279,\r\n
+        \     \"average\": 273,\r\n      \"min\": 268,\r\n      \"index\": \"high\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T18:00Z\",\r\n    \"to\":
+        \"2019-04-03T20:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 283,\r\n
+        \     \"average\": 280,\r\n      \"min\": 275,\r\n      \"index\": \"high\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T20:00Z\",\r\n    \"to\":
+        \"2019-04-03T22:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 260,\r\n
+        \     \"average\": 242,\r\n      \"min\": 221,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-03T22:00Z\",\r\n    \"to\":
+        \"2019-04-04T00:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 208,\r\n
+        \     \"average\": 200,\r\n      \"min\": 195,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T00:00Z\",\r\n    \"to\":
+        \"2019-04-04T02:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 211,\r\n
+        \     \"average\": 206,\r\n      \"min\": 198,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T02:00Z\",\r\n    \"to\":
+        \"2019-04-04T04:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 218,\r\n
+        \     \"average\": 209,\r\n      \"min\": 204,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T04:00Z\",\r\n    \"to\":
+        \"2019-04-04T06:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 263,\r\n
+        \     \"average\": 252,\r\n      \"min\": 237,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T06:00Z\",\r\n    \"to\":
+        \"2019-04-04T08:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 259,\r\n
+        \     \"average\": 249,\r\n      \"min\": 241,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T08:00Z\",\r\n    \"to\":
+        \"2019-04-04T10:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 240,\r\n
+        \     \"average\": 233,\r\n      \"min\": 225,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T10:00Z\",\r\n    \"to\":
+        \"2019-04-04T12:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 217,\r\n
+        \     \"average\": 215,\r\n      \"min\": 211,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T12:00Z\",\r\n    \"to\":
+        \"2019-04-04T14:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 207,\r\n
+        \     \"average\": 204,\r\n      \"min\": 201,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T14:00Z\",\r\n    \"to\":
+        \"2019-04-04T16:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 210,\r\n
+        \     \"average\": 205,\r\n      \"min\": 200,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T16:00Z\",\r\n    \"to\":
+        \"2019-04-04T18:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 223,\r\n
+        \     \"average\": 219,\r\n      \"min\": 212,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T18:00Z\",\r\n    \"to\":
+        \"2019-04-04T20:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 222,\r\n
+        \     \"average\": 218,\r\n      \"min\": 211,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T20:00Z\",\r\n    \"to\":
+        \"2019-04-04T22:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 199,\r\n
+        \     \"average\": 163,\r\n      \"min\": 131,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-04T22:00Z\",\r\n    \"to\":
+        \"2019-04-05T00:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 118,\r\n
+        \     \"average\": 114,\r\n      \"min\": 112,\r\n      \"index\": \"low\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T00:00Z\",\r\n    \"to\":
+        \"2019-04-05T02:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 144,\r\n
+        \     \"average\": 135,\r\n      \"min\": 123,\r\n      \"index\": \"low\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T02:00Z\",\r\n    \"to\":
+        \"2019-04-05T04:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 149,\r\n
+        \     \"average\": 140,\r\n      \"min\": 132,\r\n      \"index\": \"low\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T04:00Z\",\r\n    \"to\":
+        \"2019-04-05T06:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 212,\r\n
+        \     \"average\": 186,\r\n      \"min\": 164,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T06:00Z\",\r\n    \"to\":
+        \"2019-04-05T08:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 223,\r\n
+        \     \"average\": 216,\r\n      \"min\": 206,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T08:00Z\",\r\n    \"to\":
+        \"2019-04-05T10:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 201,\r\n
+        \     \"average\": 199,\r\n      \"min\": 197,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T10:00Z\",\r\n    \"to\":
+        \"2019-04-05T12:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 197,\r\n
+        \     \"average\": 191,\r\n      \"min\": 183,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T12:00Z\",\r\n    \"to\":
+        \"2019-04-05T14:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 192,\r\n
+        \     \"average\": 181,\r\n      \"min\": 172,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T14:00Z\",\r\n    \"to\":
+        \"2019-04-05T16:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 219,\r\n
+        \     \"average\": 211,\r\n      \"min\": 203,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T16:00Z\",\r\n    \"to\":
+        \"2019-04-05T18:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 245,\r\n
+        \     \"average\": 237,\r\n      \"min\": 226,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T18:00Z\",\r\n    \"to\":
+        \"2019-04-05T20:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 243,\r\n
+        \     \"average\": 235,\r\n      \"min\": 227,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T20:00Z\",\r\n    \"to\":
+        \"2019-04-05T22:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 214,\r\n
+        \     \"average\": 198,\r\n      \"min\": 185,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-05T22:00Z\",\r\n    \"to\":
+        \"2019-04-06T00:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 194,\r\n
+        \     \"average\": 189,\r\n      \"min\": 184,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T00:00Z\",\r\n    \"to\":
+        \"2019-04-06T02:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 220,\r\n
+        \     \"average\": 210,\r\n      \"min\": 202,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T02:00Z\",\r\n    \"to\":
+        \"2019-04-06T04:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 234,\r\n
+        \     \"average\": 230,\r\n      \"min\": 226,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T04:00Z\",\r\n    \"to\":
+        \"2019-04-06T06:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 243,\r\n
+        \     \"average\": 238,\r\n      \"min\": 234,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T06:00Z\",\r\n    \"to\":
+        \"2019-04-06T08:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 248,\r\n
+        \     \"average\": 245,\r\n      \"min\": 238,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T08:00Z\",\r\n    \"to\":
+        \"2019-04-06T10:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 234,\r\n
+        \     \"average\": 232,\r\n      \"min\": 229,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T10:00Z\",\r\n    \"to\":
+        \"2019-04-06T12:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 224,\r\n
+        \     \"average\": 222,\r\n      \"min\": 219,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T12:00Z\",\r\n    \"to\":
+        \"2019-04-06T14:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 228,\r\n
+        \     \"average\": 223,\r\n      \"min\": 220,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T14:00Z\",\r\n    \"to\":
+        \"2019-04-06T16:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 246,\r\n
+        \     \"average\": 239,\r\n      \"min\": 232,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T16:00Z\",\r\n    \"to\":
+        \"2019-04-06T18:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 258,\r\n
+        \     \"average\": 254,\r\n      \"min\": 247,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T18:00Z\",\r\n    \"to\":
+        \"2019-04-06T20:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 257,\r\n
+        \     \"average\": 254,\r\n      \"min\": 251,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T20:00Z\",\r\n    \"to\":
+        \"2019-04-06T22:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 251,\r\n
+        \     \"average\": 238,\r\n      \"min\": 224,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-06T22:00Z\",\r\n    \"to\":
+        \"2019-04-07T00:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 212,\r\n
+        \     \"average\": 208,\r\n      \"min\": 204,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T00:00Z\",\r\n    \"to\":
+        \"2019-04-07T02:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 221,\r\n
+        \     \"average\": 215,\r\n      \"min\": 207,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T02:00Z\",\r\n    \"to\":
+        \"2019-04-07T04:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 220,\r\n
+        \     \"average\": 212,\r\n      \"min\": 208,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T04:00Z\",\r\n    \"to\":
+        \"2019-04-07T06:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 207,\r\n
+        \     \"average\": 202,\r\n      \"min\": 195,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T06:00Z\",\r\n    \"to\":
+        \"2019-04-07T08:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 224,\r\n
+        \     \"average\": 219,\r\n      \"min\": 212,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T08:00Z\",\r\n    \"to\":
+        \"2019-04-07T10:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 223,\r\n
+        \     \"average\": 218,\r\n      \"min\": 211,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T10:00Z\",\r\n    \"to\":
+        \"2019-04-07T12:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 206,\r\n
+        \     \"average\": 204,\r\n      \"min\": 203,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T12:00Z\",\r\n    \"to\":
+        \"2019-04-07T14:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 211,\r\n
+        \     \"average\": 205,\r\n      \"min\": 201,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T14:00Z\",\r\n    \"to\":
+        \"2019-04-07T16:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 234,\r\n
+        \     \"average\": 225,\r\n      \"min\": 216,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T16:00Z\",\r\n    \"to\":
+        \"2019-04-07T18:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 248,\r\n
+        \     \"average\": 243,\r\n      \"min\": 238,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T18:00Z\",\r\n    \"to\":
+        \"2019-04-07T20:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 255,\r\n
+        \     \"average\": 255,\r\n      \"min\": 254,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T20:00Z\",\r\n    \"to\":
+        \"2019-04-07T22:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 246,\r\n
+        \     \"average\": 228,\r\n      \"min\": 209,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  },\r\n  { \r\n    \"from\": \"2019-04-07T22:00Z\",\r\n    \"to\":
+        \"2019-04-08T00:00Z\",\r\n    \"intensity\": {\r\n      \"max\": 197,\r\n
+        \     \"average\": 194,\r\n      \"min\": 192,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  }]\r\n}"
+  recorded_at: 2021-04-30 22:49:14 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0

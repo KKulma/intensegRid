@@ -1,0 +1,34 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.carbonintensity.org.uk/regional/wales/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      content-type: application/json
+      content-length: '443'
+      date: Fri, 30 Apr 2021 23:01:59 GMT
+      x-amzn-requestid: de2aa3bc-c196-4df0-919d-b39d1f1f0329
+      access-control-allow-origin: '*'
+      x-amz-apigw-id: enrgGG4nLPEFbVw=
+      x-amzn-trace-id: Root=1-608c8c66-372520a33ba9d6ba775f7f0e;Sampled=0
+      x-cache: Miss from cloudfront
+      via: 1.1 89033043c124289b2dedc4a7c50bd2e1.cloudfront.net (CloudFront)
+      x-amz-cf-pop: LHR3-C1
+      x-amz-cf-id: rF18gTt3cQbhZfDdRrfZCWtxTLErfuDpovl-HSizZz5c_x8Rjk_L7w==
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"data":[{"regionid":17,"dnoregion":"Wales","shortname":"Wales","data":[{"from":"2021-04-30T22:30Z","to":"2021-04-30T23:00Z","intensity":{"forecast":381,"index":"very
+        high"},"generationmix":[{"fuel":"biomass","perc":0.1},{"fuel":"coal","perc":0},{"fuel":"imports","perc":0.1},{"fuel":"gas","perc":96.6},{"fuel":"nuclear","perc":0.3},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0},{"fuel":"solar","perc":0},{"fuel":"wind","perc":2.9}]}]}]}'
+  recorded_at: 2021-04-30 23:01:59 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0

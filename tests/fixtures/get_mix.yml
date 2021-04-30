@@ -1,0 +1,33 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.carbonintensity.org.uk/generation/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      content-type: application/json
+      content-length: '331'
+      date: Fri, 30 Apr 2021 22:17:00 GMT
+      x-amzn-requestid: 00b5840b-98b4-4aef-bc02-83427ab13f52
+      access-control-allow-origin: '*'
+      x-amz-apigw-id: enk6bF4TLPEFelg=
+      x-amzn-trace-id: Root=1-608c81dc-0f24d479578b97f12e966336;Sampled=0
+      x-cache: Miss from cloudfront
+      via: 1.1 267bfe27afa1516efa885f63f8264bbc.cloudfront.net (CloudFront)
+      x-amz-cf-pop: LHR3-C1
+      x-amz-cf-id: xrL_0yKdZBCZ4CXKJTFXlhJOd-aYJyvZoNc9a6FBgCPJIU3CK1mUPA==
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"data":{"from":"2021-04-30T21:30Z","to":"2021-04-30T22:00Z","generationmix":[{"fuel":"biomass","perc":7.8},{"fuel":"coal","perc":1.2},{"fuel":"imports","perc":10.6},{"fuel":"gas","perc":58.6},{"fuel":"nuclear","perc":17.7},{"fuel":"other","perc":0},{"fuel":"hydro","perc":1.2},{"fuel":"solar","perc":0},{"fuel":"wind","perc":3}]}}'
+  recorded_at: 2021-04-30 22:17:01 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0

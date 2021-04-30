@@ -1,0 +1,50 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.carbonintensity.org.uk/regional/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      content-type: application/json
+      content-length: '6954'
+      date: Fri, 30 Apr 2021 23:01:58 GMT
+      x-amzn-requestid: c5f49fa3-da52-46b4-a363-f8ee78f048fc
+      access-control-allow-origin: '*'
+      x-amz-apigw-id: enrf9HFfrPEFuHQ=
+      x-amzn-trace-id: Root=1-608c8c66-633af63c3fd1355f4e6a69a4;Sampled=0
+      x-cache: Miss from cloudfront
+      via: 1.1 89033043c124289b2dedc4a7c50bd2e1.cloudfront.net (CloudFront)
+      x-amz-cf-pop: LHR3-C1
+      x-amz-cf-id: 8vOGEIdr7OqcHl1ge0glXN04YbdGkzwX5eRC-B7QO-ZzSG5ofEYN3g==
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"data":[{"from":"2021-04-30T22:30Z","to":"2021-04-30T23:00Z","regions":[{"regionid":1,"dnoregion":"Scottish
+        Hydro Electric Power Distribution","shortname":"North Scotland","intensity":{"forecast":300,"index":"high"},"generationmix":[{"fuel":"biomass","perc":0},{"fuel":"coal","perc":0},{"fuel":"imports","perc":0},{"fuel":"gas","perc":76.2},{"fuel":"nuclear","perc":0},{"fuel":"other","perc":0},{"fuel":"hydro","perc":13.7},{"fuel":"solar","perc":0},{"fuel":"wind","perc":10}]},{"regionid":2,"dnoregion":"SP
+        Distribution","shortname":"South Scotland","intensity":{"forecast":151,"index":"low"},"generationmix":[{"fuel":"biomass","perc":11.6},{"fuel":"coal","perc":0},{"fuel":"imports","perc":0},{"fuel":"gas","perc":34.7},{"fuel":"nuclear","perc":37.6},{"fuel":"other","perc":0},{"fuel":"hydro","perc":4.1},{"fuel":"solar","perc":0},{"fuel":"wind","perc":12.1}]},{"regionid":3,"dnoregion":"Electricity
+        North West","shortname":"North West England","intensity":{"forecast":138,"index":"low"},"generationmix":[{"fuel":"biomass","perc":8.7},{"fuel":"coal","perc":0},{"fuel":"imports","perc":0},{"fuel":"gas","perc":32.4},{"fuel":"nuclear","perc":56},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0},{"fuel":"solar","perc":0},{"fuel":"wind","perc":3}]},{"regionid":4,"dnoregion":"NPG
+        North East","shortname":"North East England","intensity":{"forecast":104,"index":"low"},"generationmix":[{"fuel":"biomass","perc":29.4},{"fuel":"coal","perc":0},{"fuel":"imports","perc":0},{"fuel":"gas","perc":17.5},{"fuel":"nuclear","perc":51.2},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0},{"fuel":"solar","perc":0},{"fuel":"wind","perc":1.9}]},{"regionid":5,"dnoregion":"NPG
+        Yorkshire","shortname":"Yorkshire","intensity":{"forecast":273,"index":"high"},"generationmix":[{"fuel":"biomass","perc":39.5},{"fuel":"coal","perc":0},{"fuel":"imports","perc":0},{"fuel":"gas","perc":57.3},{"fuel":"nuclear","perc":0},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0},{"fuel":"solar","perc":0},{"fuel":"wind","perc":3.1}]},{"regionid":6,"dnoregion":"SP
+        Manweb","shortname":"North Wales & Merseyside","intensity":{"forecast":288,"index":"high"},"generationmix":[{"fuel":"biomass","perc":3.5},{"fuel":"coal","perc":0},{"fuel":"imports","perc":0},{"fuel":"gas","perc":72.1},{"fuel":"nuclear","perc":19.4},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0.5},{"fuel":"solar","perc":0},{"fuel":"wind","perc":4.5}]},{"regionid":7,"dnoregion":"WPD
+        South Wales","shortname":"South Wales","intensity":{"forecast":387,"index":"very
+        high"},"generationmix":[{"fuel":"biomass","perc":0},{"fuel":"coal","perc":0},{"fuel":"imports","perc":0},{"fuel":"gas","perc":98.2},{"fuel":"nuclear","perc":0},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0},{"fuel":"solar","perc":0},{"fuel":"wind","perc":1.8}]},{"regionid":8,"dnoregion":"WPD
+        West Midlands","shortname":"West Midlands","intensity":{"forecast":313,"index":"high"},"generationmix":[{"fuel":"biomass","perc":5.5},{"fuel":"coal","perc":1},{"fuel":"imports","perc":5},{"fuel":"gas","perc":74.4},{"fuel":"nuclear","perc":12},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0.1},{"fuel":"solar","perc":0},{"fuel":"wind","perc":2}]},{"regionid":9,"dnoregion":"WPD
+        East Midlands","shortname":"East Midlands","intensity":{"forecast":367,"index":"very
+        high"},"generationmix":[{"fuel":"biomass","perc":10.1},{"fuel":"coal","perc":2.7},{"fuel":"imports","perc":0.9},{"fuel":"gas","perc":83.5},{"fuel":"nuclear","perc":0.3},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0},{"fuel":"solar","perc":0},{"fuel":"wind","perc":2.5}]},{"regionid":10,"dnoregion":"UKPN
+        East","shortname":"East England","intensity":{"forecast":309,"index":"high"},"generationmix":[{"fuel":"biomass","perc":0},{"fuel":"coal","perc":0},{"fuel":"imports","perc":14.6},{"fuel":"gas","perc":75.5},{"fuel":"nuclear","perc":6.8},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0.2},{"fuel":"solar","perc":0},{"fuel":"wind","perc":2.9}]},{"regionid":11,"dnoregion":"WPD
+        South West","shortname":"South West England","intensity":{"forecast":116,"index":"low"},"generationmix":[{"fuel":"biomass","perc":0},{"fuel":"coal","perc":0},{"fuel":"imports","perc":0},{"fuel":"gas","perc":29.4},{"fuel":"nuclear","perc":69.7},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0},{"fuel":"solar","perc":0},{"fuel":"wind","perc":0.9}]},{"regionid":12,"dnoregion":"SSE
+        South","shortname":"South England","intensity":{"forecast":323,"index":"high"},"generationmix":[{"fuel":"biomass","perc":0.1},{"fuel":"coal","perc":0.1},{"fuel":"imports","perc":17},{"fuel":"gas","perc":78.3},{"fuel":"nuclear","perc":4},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0.3},{"fuel":"solar","perc":0},{"fuel":"wind","perc":0.2}]},{"regionid":13,"dnoregion":"UKPN
+        London","shortname":"London","intensity":{"forecast":210,"index":"moderate"},"generationmix":[{"fuel":"biomass","perc":0},{"fuel":"coal","perc":0},{"fuel":"imports","perc":55.9},{"fuel":"gas","perc":42.3},{"fuel":"nuclear","perc":0.3},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0.8},{"fuel":"solar","perc":0},{"fuel":"wind","perc":0.6}]},{"regionid":14,"dnoregion":"UKPN
+        South East","shortname":"South East England","intensity":{"forecast":205,"index":"moderate"},"generationmix":[{"fuel":"biomass","perc":0},{"fuel":"coal","perc":0},{"fuel":"imports","perc":58.1},{"fuel":"gas","perc":40.5},{"fuel":"nuclear","perc":0},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0.9},{"fuel":"solar","perc":0},{"fuel":"wind","perc":0.5}]},{"regionid":15,"dnoregion":"England","shortname":"England","intensity":{"forecast":243,"index":"moderate"},"generationmix":[{"fuel":"biomass","perc":9.1},{"fuel":"coal","perc":0.5},{"fuel":"imports","perc":12.6},{"fuel":"gas","perc":55.2},{"fuel":"nuclear","perc":20.5},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0.2},{"fuel":"solar","perc":0},{"fuel":"wind","perc":1.9}]},{"regionid":16,"dnoregion":"Scotland","shortname":"Scotland","intensity":{"forecast":230,"index":"moderate"},"generationmix":[{"fuel":"biomass","perc":3.8},{"fuel":"coal","perc":0.1},{"fuel":"imports","perc":1.5},{"fuel":"gas","perc":56.7},{"fuel":"nuclear","perc":17.9},{"fuel":"other","perc":0},{"fuel":"hydro","perc":8.3},{"fuel":"solar","perc":0},{"fuel":"wind","perc":11.6}]},{"regionid":17,"dnoregion":"Wales","shortname":"Wales","intensity":{"forecast":381,"index":"very
+        high"},"generationmix":[{"fuel":"biomass","perc":0.1},{"fuel":"coal","perc":0},{"fuel":"imports","perc":0.1},{"fuel":"gas","perc":96.6},{"fuel":"nuclear","perc":0.3},{"fuel":"other","perc":0},{"fuel":"hydro","perc":0},{"fuel":"solar","perc":0},{"fuel":"wind","perc":2.9}]},{"regionid":18,"dnoregion":"GB","shortname":"GB","intensity":{"forecast":255,"index":"moderate"},"generationmix":[{"fuel":"biomass","perc":7.9},{"fuel":"coal","perc":0.4},{"fuel":"imports","perc":10.6},{"fuel":"gas","perc":58.3},{"fuel":"nuclear","perc":18.8},{"fuel":"other","perc":0},{"fuel":"hydro","perc":1},{"fuel":"solar","perc":0},{"fuel":"wind","perc":3}]}]}]}'
+  recorded_at: 2021-04-30 23:01:58 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0

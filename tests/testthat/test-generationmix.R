@@ -2,8 +2,13 @@ test_that("get_mix works", {
   start <- "2019-04-01"
   end <- "2019-04-07"
   
-  raw <- get_mix()
-  raw_with_dates <- get_mix(start, end)
+  vcr::use_cassette("get_mix", {
+    raw <- get_mix()
+  })
+  
+  vcr::use_cassette("raw_with_dates", {
+    raw_with_dates <- get_mix(start, end)
+  })
   
   expect_type(raw, "list")
   expect_gte(ncol(raw), 4)

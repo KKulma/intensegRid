@@ -1,0 +1,36 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.carbonintensity.org.uk/intensity/stats/2019-04-01T00:00Z/2019-04-07T23:59Z
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      content-type: application/json
+      content-length: '206'
+      date: Fri, 30 Apr 2021 22:49:12 GMT
+      x-amzn-requestid: 20f08e00-58f4-466f-89d8-081c15d9c59c
+      access-control-allow-origin: '*'
+      x-amz-apigw-id: enpn-FA7LPEFeGg=
+      x-amzn-trace-id: Root=1-608c8966-6d3a45b60d80f9da1370fd0f;Sampled=0
+      x-cache: Miss from cloudfront
+      via: 1.1 7d4502925a4a466598af9dc0cff9e995.cloudfront.net (CloudFront)
+      x-amz-cf-pop: LHR62-C5
+      x-amz-cf-id: myqBCcod2_ZDg5VpDjhDlhBttvPso0KkmT11EKQAnOxbOBrnMGeOcQ==
+    body:
+      encoding: UTF-8
+      file: no
+      string: "{ \r\n  \"data\":[{ \r\n    \"from\": \"2019-04-01T00:00Z\",\r\n    \"to\":
+        \"2019-04-07T23:59Z\",\r\n    \"intensity\": {\r\n      \"max\": 294,\r\n
+        \     \"average\": 224,\r\n      \"min\": 112,\r\n      \"index\": \"moderate\"\r\n
+        \   }\r\n  }]\r\n}"
+  recorded_at: 2021-04-30 22:49:12 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0

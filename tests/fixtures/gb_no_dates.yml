@@ -1,0 +1,35 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.carbonintensity.org.uk/intensity/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      content-type: application/json
+      content-length: '193'
+      date: Fri, 30 Apr 2021 23:01:57 GMT
+      x-amzn-requestid: cbdb84be-4134-45e2-a265-fe230e3ebf26
+      access-control-allow-origin: '*'
+      x-amz-apigw-id: enrf0FnqrPEFmlQ=
+      x-amzn-trace-id: Root=1-608c8c65-137497d25103be300b3ca5b3;Sampled=0
+      x-cache: Miss from cloudfront
+      via: 1.1 89033043c124289b2dedc4a7c50bd2e1.cloudfront.net (CloudFront)
+      x-amz-cf-pop: LHR3-C1
+      x-amz-cf-id: Zrn30LWAZis3IDov8wPSSTVm5VHMVOLdAkslcBdKBh0SvafUH_GZYw==
+    body:
+      encoding: UTF-8
+      file: no
+      string: "{ \r\n  \"data\":[{ \r\n    \"from\": \"2021-04-30T22:30Z\",\r\n    \"to\":
+        \"2021-04-30T23:00Z\",\r\n    \"intensity\": {\r\n      \"forecast\": 255,\r\n
+        \     \"actual\": null, \r\n      \"index\": \"moderate\"\r\n    }\r\n  }]\r\n}"
+  recorded_at: 2021-04-30 23:01:57 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0
