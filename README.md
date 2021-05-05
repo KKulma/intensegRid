@@ -10,6 +10,8 @@
 coverage](https://codecov.io/gh/KKulma/intensegRid/branch/master/graph/badge.svg)](https://codecov.io/gh/KKulma/intensegRid?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/intensegRid)](https://CRAN.R-project.org/package=intensegRid)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/intensegRid)](https://cran.r-project.org/package=intensegRid)
+[![Downloads](http://cranlogs.r-pkg.org/badges/intensegRid)](https://cran.r-project.org/package=intensegRid)
 <!-- badges: end -->
 
 # intensegRid <img src='man/figures/logo.png' align="right" height="200" /></a>
@@ -50,12 +52,12 @@ can easily filter the output of **intensegRid** functions using
 
 ## Contribution
 
-This is an open-source project and it welcomes your contribution\! Feel
+This is an open-source project and it welcomes your contribution! Feel
 free to use and test the package and if you find a bug, please, report
 it as [an issue](https://github.com/KKulma/intensegRid/issues). You may
-want to go even a step further and fix an issue you just raised\!
+want to go even a step further and fix an issue you just raised!
 
 If you’re rather new to open source and git, [this
 repo](https://github.com/firstcontributions/first-contributions/blob/master/README.md)
 offers some easy to follow guidance on how to start. Thanks for your
-time and efforts\!
+time and efforts!
