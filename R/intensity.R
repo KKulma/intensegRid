@@ -18,6 +18,8 @@ get_british_ci <-
     
     if (all(is.null(c(start, end)))) {
       call <- url
+      result <- query_british_ci_api(call)
+      return(result)
     } else if (all(!is.null(c(start, end)))) {
       from_date <- paste0(as.Date(start), 'T00:00Z/')
       to_date <- paste0(as.Date(end), 'T23:59Z')
