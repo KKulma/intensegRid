@@ -21,30 +21,50 @@ get_british_ci <-
       result <- query_british_ci_api(call)
       return(result)
     } else if (all(!is.null(c(start, end)))) {
-      from_date <- paste0(as.Date(start), 'T00:00Z/')
-      to_date <- paste0(as.Date(end), 'T23:59Z')
-      
-      call <- paste0(url, from_date, to_date)
+      # No error if both specified
     } else {
       stop('Both start and end arguments have to be either NULL or in use')
     }
     
-    data <- get_data(call)
+    # List all the dates out
+    dates <- seq(lubridate::ymd(start), lubridate::ymd(end), by = '1 day')
     
-    if (is.list(data) && length(data) == 0) {
-      result <- NULL
-    } else {
-      result <- data %>%
-        dplyr::mutate(from = lubridate::ymd_hm(.data$from),
-                      to = lubridate::ymd_hm(.data$to)) %>%
-        tibble::as_tibble()
-      
-      result <- clean_colnames(result)
-    }
+    # Split the list into maximum of 14 days to prevent api errors
+    result <- purrr::map_df(split(dates, ceiling(seq_along(dates) / 14)), function(i){
+      start = min(i)
+      end = max(i)
+      from_date <- paste0(as.Date(start), 'T00:00Z/')
+      to_date <- paste0(as.Date(end), 'T23:59Z')
+      call <- paste0(url, from_date, to_date)
+      result <- query_british_ci_api(call)
+    })
     
     result
   }
 
+
+#' Internal function to call the carbon intensity API
+#' 
+#' @param call The API call formatted fromt he get_british_ci function
+#' 
+query_british_ci_api <- function(call){
+  
+  data <- get_data(call)
+  
+  if (is.list(data) && length(data) == 0) {
+    result <- NULL
+  } else {
+    result <- data %>%
+      dplyr::mutate(from = lubridate::ymd_hm(.data$from),
+                    to = lubridate::ymd_hm(.data$to)) %>%
+      tibble::as_tibble()
+    
+    result <- clean_colnames(result)
+  }
+  
+  result
+  
+}
 
 
 #' Get Carbon Intensity data for current half hour for a specified GB Region
