@@ -31,7 +31,6 @@ test_that("get_stats() works", {
   expect_equal(nrow(stats_block), time_blocks)
   expect_equal(ncol(stats_block), 6)
   
-  expect_error(get_stats(10, 20))
   expect_error(get_stats(start, "2019-05-02"))
   expect_error(get_stats(start, end, block = 25))
   expect_error(get_stats(start, end, block = 0.5))
