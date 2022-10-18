@@ -6,6 +6,7 @@
 #' @return a data.frame with 1/2-hourly carbon intensity data for specified time period
 #' @export
 #' @importFrom rlang .data
+#' @importFrom purrr map
 #'
 #' @examples \dontrun{
 #' get_british_ci()
