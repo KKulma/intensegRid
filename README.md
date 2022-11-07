@@ -7,11 +7,11 @@
 
 [![R-CMD-check](https://github.com/KKulma/intensegRid/workflows/R-CMD-check/badge.svg)](https://github.com/KKulma/intensegRid/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/KKulma/intensegRid/branch/master/graph/badge.svg)](https://codecov.io/gh/KKulma/intensegRid?branch=master)
+coverage](https://codecov.io/gh/KKulma/intensegRid/branch/master/graph/badge.svg)]( https://app.codecov.io/gh/KKulma/intensegRid?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/intensegRid)](https://CRAN.R-project.org/package=intensegRid)
-[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/intensegRid)](https://cran.r-project.org/package=intensegRid)
-[![Downloads](http://cranlogs.r-pkg.org/badges/intensegRid)](https://cran.r-project.org/package=intensegRid)
+[![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/intensegRid)](https://cran.r-project.org/package=intensegRid)
+[![Downloads](https://cranlogs.r-pkg.org/badges/intensegRid)](https://cran.r-project.org/package=intensegRid)
 <!-- badges: end -->
 
 # intensegRid <img src='man/figures/logo.png' align="right" height="200" /></a>
